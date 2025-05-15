@@ -19,9 +19,41 @@
 
     <h3>고정 크기 (픽셀단위)</h3>
     <p>화면 크기와 관계없이 고정된 크기</p>
-    <img src="assets/bird.jpg" alt="" />
-    <img src="assets/palm.jpg" alt="" />
+    <img src="assets/bird.jpg" width="200" height="120" />
+    <img src="assets/palm.jpg" width="200" height="120" />
+
     <h3>가변 크기 (퍼센트 단위)</h3>
     <p>부모 태그의 너비에 따라 크기가 자동으로 조절</p>
+    <img src="assets/bird.jpg" width="49%" height="120" />
+    <img src="assets/palm.jpg" width="49%" height="120" />
+    <!-- 화면의 끝과 끝을 100으로 봤을 때 15%를 차지하는 값 
+         여백들도 스타일로 인식 -> CSS에서 바꿀수 있다.
+    -->
+
+    <h3>반응형 이미지</h3>
+    <p>디바이스 너비에 따라 최적의 이미지를 자동 선택한다.</p>
+    <!-- 디바이스의 너비는 무조건 width. -->
+    <!-- 외부 이미지 저장소의 URL을 src에 입력하면 가능하다. -->
+    <img
+      src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200"
+      srcset="
+        https://images.unsplash.com/photo-1518770660439-4636190af475?w=480   480w,
+        https://images.unsplash.com/photo-1518770660439-4636190af475?w=800   800w,
+        https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200 1200w
+      "
+      sizes="(max-width: 600px) 480px,(max-width:900) 800px, 1200px"
+      width="100%"
+      alt=""
+    />
+    <!-- URL 주소 뒤에 ?w=n을 하게 되면 n만큼의 width길이로 URL서버에 요청해서 받아옴. -->
+
+    <h2>오디오 태그</h2>
+    <audio src="assets/audio.mp3" controls loop></audio>
+    <a href="assets/audio.mp3" download>오디오 다운로드</a>
+    <!-- 오디오 비디오는 controls를 이용
+        controls : 재생 컨트롤러 표시 
+        loop : 반복 재생 
+         -->
+    <h2>비디오 태그</h2>
   </body>
 </html>
