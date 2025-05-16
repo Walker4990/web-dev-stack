@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>폼 태그</title>
+  </head>
+  <body>
+    <!-- 폼(Form)
+     사용자가 페이지에 값을 입력하고 전송하는 모든 영역
+     모든 입력 양식은 <Form> 태그 내부에 작성한다.
+        대부분 <input> 태그 type 속성으로 구분
+        입력값 구분을 위해 name 속성(=서버에 전송할 키값) 필수
+        <textarea>, <select>, <button>, ...
+        -->
+
+    <!--  
+      -->
+    <h1>Form</h1>
+    <h2>검색</h2>
+    <form action="" method="get">
+      <!--  -action : 데이터를 전달할 서버 주소
+            but, 지금은 서버가 없어서 사용 못함
+            -method : 데이터 전송 방식(get or post)
+                get과 post 차이
+                -post : 데이터가 숨겨져서 저장, 보안 높음 (회원가입, 로그인)
+                -get : URL에 데이터 노출, 빠르고 간단, 보안 낮음 (검색,조회 등) -->
+
+      검색: <input type="text" name="keyword" />
+      <!-- input의 타입 속성들
+            -text : 한줄 입력 
+            -password : 비밀번호 입력
+            -submit : 제출 버튼
+            -reset : 초기화 버튼
+            -button : JS(JavaScript)용 버튼
+            -radio : 
+
+            -->
+      <input type="submit" />
+      <!-- https://www.google.com/search?q=css
+                        ?key=value -->
+    </form>
+    <h2>로그인</h2>
+    <form action="" method="post">
+      아이디 : <input type="text" name="id" /> <br />
+      비밀번호 : <input type="password" name="pwd" /> <br />
+      <input type="submit" />
+      <input type="reset" />
+      <input type="button" value="확인" onclick="alert('버튼 클릭')" />
+    </form>
+    <!-- 보내자고 하는 것끼리 묶는다 -->
+    <h2>라디오 & 체크박스</h2>
+    <form action="">
+      <fieldset>
+        <legend>성별</legend>
+        <input type="radio" name="gender" value="Man" id="Man" checked />
+        <label for="Man">Man </label>
+        <br />
+        <input type="radio" name="gender" value="Woman" id="Woman" />
+        <label for="Woman">Woman</label>
+      </fieldset>
+      <input type="submit" />
+    </form>
+    <!-- fieldset은 거의 쓰지 않는다. 꾸미는 용도의 HTML은 CSS로 넘긴다. -->
+  </body>
+</html>

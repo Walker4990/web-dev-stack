@@ -49,12 +49,35 @@
 
     <h2>오디오 태그</h2>
     <audio src="assets/audio.mp3" controls loop>
-      <a href="assets/audio.mp3" download>오디오 다운로드</a>
+      브라우저가 오디오를 지원하지 않습니다.
     </audio>
     <!-- 오디오 비디오는 controls를 이용
         controls : 재생 컨트롤러 표시 
         loop : 반복 재생 
+        사실상 쓸 일이 많이 없다.
          -->
     <h2>비디오 태그</h2>
+    <!-- controls : 재생 컨트롤러 표시
+          poster : 썸네일 이미지
+           -->
+    <video
+      src="assets/video.mp4"
+      controls
+      poster="assets/thumbnail.png"
+    ></video>
+
+    <!-- iframe : 외부 콘텐츠 삽입
+        유튜브 영상 삽입 시 근데 작업 할 일이 딱히 없음
+        유튜브 영상에 공유 -> 퍼가기 -> iframe 복사 & 붙여넣기 -->
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/BKU4eOWSthQ?si=WQn8ILA9U31dz1YB"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+    ></iframe>
   </body>
 </html>
