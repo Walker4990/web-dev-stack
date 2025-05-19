@@ -6,26 +6,38 @@
     <title>시맨틱 태그 과제</title>
   </head>
   <body>
+    <!-- 보여주고 싶은 대로 묶어준다. section으로 다 나눠도 상관없음. -->
     <header>
+      <!-- section -->
       <img src="assets/hui.png" width="200" alt="후이바오" />
       <h1>후이바오</h1>
       <p>송바오 껌딱지, 사는 곳 에버랜드</p>
+      <div class="SNS">
+        <a href="https://www.GitHub.com/" target="_blank">Github</a>
+        <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+      </div>
+      <!-- 같은 라인에 있는 애들은 묶어놓는다. css를 넣을때 무슨일이 있을지 모른다. -->
     </header>
+    <!-- section -->
+
     <section>
-      <article>
-        <h2>Who am I</h2>
-        <p>송바오 몰래 코딩을 배우고 있는 개발자 후이바오입니다.</p>
-      </article>
-      <article>
-        <h2>Experience</h2>
-        <p>
-          루이바오에게 코딩을 가르쳐 주려고 열심히 코딩 중... 아직도 왜 이해를
-          못하냐고?!
-        </p>
-      </article>
-      <article>
-        <h2>Skills</h2>
-        <aside>
+      <h2>Who am I</h2>
+      <p>송바오 몰래 코딩을 배우고 있는 개발자 후이바오입니다.</p>
+    </section>
+    <section>
+      <h2>Experience</h2>
+      <p>
+        루이바오에게 코딩을 가르쳐 주려고 열심히 코딩 중... 아직도 왜 이해를
+        못하냐고?!
+      </p>
+    </section>
+    <!-- /section article 삭제 -->
+    <!-- section -->
+    <section>
+      <h2>Skills</h2>
+      <div class="content">
+        <!-- Skills에 포함된 애들이 한 선상에 같이 있었으면 해서 같은 class로 묶음. -->
+        <article>
           <h3>Front-End</h3>
           <ul>
             <li>HTML</li>
@@ -33,23 +45,25 @@
             <li>JavaScript</li>
             <li>React</li>
           </ul>
-        </aside>
-        <h3>Back-End</h3>
-        <aside>
+        </article>
+        <article>
+          <h3>Back-End</h3>
           <ul>
             <li>Java</li>
             <li>Oracle</li>
             <li>Spring Boot</li>
             <li>AWS</li>
           </ul>
-        </aside>
-      </article>
+        </article>
+      </div>
     </section>
+    <!-- section -->
     <footer>
       <h2>Education</h2>
       <ul>
         <li>2025.05.15 ~ KH 정보교육원</li>
       </ul>
     </footer>
+    <!-- /section footer 삭제 -->
   </body>
 </html>
