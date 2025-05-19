@@ -1,0 +1,103 @@
+/* width, height */
+/* px : 고정크기 / % : 부모 기준 비율 / vw, vh : 뷰포트 너비, 높이 기준 비율 */
+#fixed-size {
+  width: 300px;
+  height: 150px;
+  background-color: lightblue;
+}
+#variable-size {
+  /* width : % 사용 height : vh사용 
+    vw / vh: view width / view height
+    100vw/vh -> 화면 크기만큼 */
+  width: 80%;
+  height: 100vh;
+  background-color: lightgreen;
+}
+/* padding, margin */
+.space {
+  background: lightyellow;
+  border: 1px solid;
+  margin-bottom: 10px;
+}
+#padding1 {
+  /* 상하좌우 모두 20px */
+  padding: 20px;
+}
+#padding2 {
+  /* 개별 지정 
+    padding : 시계방향 (top-right-bottom-left) */
+  padding-top: 30px;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  /* (top-right-bottom-left) */
+  padding: 30px 20px 40px 10px;
+  /* top right/left bottom */
+  padding: 30px 20px 40px;
+  /* top/bottom right/left */
+  padding: 30px 20px;
+}
+#margin1 {
+  margin: 20px;
+}
+#margin2 {
+  /* padding과 순서 동일
+    위 아래의 값의 최댓값으로 margin값 지정 */
+  margin: 5px 15px 10px 30px;
+}
+.collapse-box {
+  background-color: aqua;
+  padding: 10px;
+  border: 1px solid #444;
+}
+#box1 {
+  margin-bottom: 50px;
+}
+#box2 {
+  margin-top: 30px;
+}
+.center-box {
+  /* height와 line-height의 값이 똑같으면 수직 중앙 정렬 */
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  background-color: lightseagreen;
+  color: white;
+  text-align: center;
+  margin: auto;
+}
+.border {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  background: #eee;
+  display: inline-block;
+}
+#border1 {
+  /*     두께, 형태, 색깔 
+  solid : 실선 / dashed : 점실선 / dotted : 점선  */
+  border: 3px solid red;
+}
+#border2 {
+  border: 5px dashed green;
+}
+#border3 {
+  border: 2px dotted blue;
+}
+.radius-box {
+  width: 150px;
+  height: 150px;
+  background: plum;
+  color: white;
+  text-align: center;
+  line-height: 120px;
+  margin-bottom: 10px;
+}
+.radius1 {
+  border-radius: 10px;
+}
+.radius2 {
+  /* 60px = 50%
+    -> width, height기준 */
+  border-radius: 50%;
+}
