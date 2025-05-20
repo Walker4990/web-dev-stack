@@ -101,3 +101,141 @@
     -> width, height기준 */
   border-radius: 50%;
 }
+/* box-sizing */
+.box {
+  width: 300px;
+  height: 200px;
+  padding: 20px;
+  border: 10px solid;
+  background-color: lightcoral;
+  margin: 10px;
+}
+.box-content {
+  /* 컨텐츠 300px + (padding + border)*2 */
+  box-sizing: content-box;
+}
+.box-border {
+  /* 컨텐츠 사이즈를 알아서 맞춰줌 */
+  box-sizing: border-box;
+}
+/* dispaly */
+.display {
+  background-color: pink;
+  padding: 10px;
+  margin: 5px;
+  width: 150px;
+  height: 70px;
+}
+.display-inline {
+  /* width, height값이 안들어감 */
+  display: inline;
+}
+.display-block {
+  /* 한 줄 다 차지 */
+  display: block;
+}
+.display-inline-block {
+  /* 두 개의 장단점을 합친 것 */
+  display: inline-block;
+}
+/* float */
+.float {
+  /* 페이지에서 빈공간이라고 인식함 */
+  width: 80px;
+  height: 80px;
+  margin: 5px;
+  background-color: skyblue;
+  text-align: center;
+  line-height: 80px;
+  float: left;
+}
+/* position */
+#outer {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  background-color: #f4f4f4;
+  overflow: auto;
+}
+.position-box {
+  width: 100px;
+  height: 100px;
+}
+#relative {
+  background-color: orange;
+  position: relative;
+  /* top, bottom, left, right 속성
+   본인 현재 위치에서 이동
+   minus도 가능하다. */
+  left: 50px;
+  bottom: 100px;
+}
+#absolute {
+  /* 브라우저 시작점 기준
+      부모에 position: relative; 가 있다면 이것이 기준 */
+  background-color: green;
+  position: absolute;
+  top: 20px;
+  left: 30px;
+}
+#fixed {
+  /* 스크롤을 내려도 계속 따라옴 */
+  background-color: red;
+  position: fixed;
+  right: 20px;
+  top: 30px;
+}
+#sticky {
+  /* 스크롤을 올려도 화면에서 사라지지 않음. */
+  background-color: blue;
+  position: sticky;
+  top: 0;
+}
+.visibility {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  background-color: lightgrey;
+  display: inline-block;
+}
+#vis1 {
+  /* 사라지지만 공간은 사라지지 않음 */
+  visibility: hidden;
+}
+#vis2 {
+  visibility: visible;
+}
+#dis1 {
+  /* 사라짐과 동시에 공간도 사라짐 
+  태그는 남아있음*/
+  display: none;
+}
+#z-outer {
+  width: 200px;
+  height: 200px;
+  background-color: #dddddd;
+  position: relative;
+}
+.z-index {
+  /* opacity : 투명도 */
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  opacity: 0.7;
+}
+#z-index1 {
+  background-color: red;
+  z-index: 1;
+  top: 20px;
+  left: 20px;
+}
+#z-index2 {
+  background-color: green;
+  z-index: 2;
+  top: 40px;
+  left: 40px;
+}
+#z-index3 {
+  background-color: blue;
+  z-index: 9999;
+}
