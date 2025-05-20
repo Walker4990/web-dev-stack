@@ -1,0 +1,241 @@
+/* width, height */
+/* px : 고정크기 / % : 부모 기준 비율 / vw, vh : 뷰포트 너비, 높이 기준 비율 */
+#fixed-size {
+  width: 300px;
+  height: 150px;
+  background-color: lightblue;
+}
+#variable-size {
+  /* width : % 사용 height : vh사용 
+    vw / vh: view width / view height
+    100vw/vh -> 화면 크기만큼 */
+  width: 80%;
+  height: 100vh;
+  background-color: lightgreen;
+}
+/* padding, margin */
+.space {
+  background: lightyellow;
+  border: 1px solid;
+  margin-bottom: 10px;
+}
+#padding1 {
+  /* 상하좌우 모두 20px */
+  padding: 20px;
+}
+#padding2 {
+  /* 개별 지정 
+    padding : 시계방향 (top-right-bottom-left) */
+  padding-top: 30px;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  /* (top-right-bottom-left) */
+  padding: 30px 20px 40px 10px;
+  /* top right/left bottom */
+  padding: 30px 20px 40px;
+  /* top/bottom right/left */
+  padding: 30px 20px;
+}
+#margin1 {
+  margin: 20px;
+}
+#margin2 {
+  /* padding과 순서 동일
+    위 아래의 값의 최댓값으로 margin값 지정 */
+  margin: 5px 15px 10px 30px;
+}
+.collapse-box {
+  background-color: aqua;
+  padding: 10px;
+  border: 1px solid #444;
+}
+#box1 {
+  margin-bottom: 50px;
+}
+#box2 {
+  margin-top: 30px;
+}
+.center-box {
+  /* height와 line-height의 값이 똑같으면 수직 중앙 정렬 */
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  background-color: lightseagreen;
+  color: white;
+  text-align: center;
+  margin: auto;
+}
+.border {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  background: #eee;
+  display: inline-block;
+}
+#border1 {
+  /*     두께, 형태, 색깔 
+  solid : 실선 / dashed : 점실선 / dotted : 점선  */
+  border: 3px solid red;
+}
+#border2 {
+  border: 5px dashed green;
+}
+#border3 {
+  border: 2px dotted blue;
+}
+.radius-box {
+  width: 150px;
+  height: 150px;
+  background: plum;
+  color: white;
+  text-align: center;
+  line-height: 120px;
+  margin-bottom: 10px;
+}
+.radius1 {
+  border-radius: 10px;
+}
+.radius2 {
+  /* 60px = 50%
+    -> width, height기준 */
+  border-radius: 50%;
+}
+/* box-sizing */
+.box {
+  width: 300px;
+  height: 200px;
+  padding: 20px;
+  border: 10px solid;
+  background-color: lightcoral;
+  margin: 10px;
+}
+.box-content {
+  /* 컨텐츠 300px + (padding + border)*2 */
+  box-sizing: content-box;
+}
+.box-border {
+  /* 컨텐츠 사이즈를 알아서 맞춰줌 */
+  box-sizing: border-box;
+}
+/* dispaly */
+.display {
+  background-color: pink;
+  padding: 10px;
+  margin: 5px;
+  width: 150px;
+  height: 70px;
+}
+.display-inline {
+  /* width, height값이 안들어감 */
+  display: inline;
+}
+.display-block {
+  /* 한 줄 다 차지 */
+  display: block;
+}
+.display-inline-block {
+  /* 두 개의 장단점을 합친 것 */
+  display: inline-block;
+}
+/* float */
+.float {
+  /* 페이지에서 빈공간이라고 인식함 */
+  width: 80px;
+  height: 80px;
+  margin: 5px;
+  background-color: skyblue;
+  text-align: center;
+  line-height: 80px;
+  float: left;
+}
+/* position */
+#outer {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  background-color: #f4f4f4;
+  overflow: auto;
+}
+.position-box {
+  width: 100px;
+  height: 100px;
+}
+#relative {
+  background-color: orange;
+  position: relative;
+  /* top, bottom, left, right 속성
+   본인 현재 위치에서 이동
+   minus도 가능하다. */
+  left: 50px;
+  bottom: 100px;
+}
+#absolute {
+  /* 브라우저 시작점 기준
+      부모에 position: relative; 가 있다면 이것이 기준 */
+  background-color: green;
+  position: absolute;
+  top: 20px;
+  left: 30px;
+}
+#fixed {
+  /* 스크롤을 내려도 계속 따라옴 */
+  background-color: red;
+  position: fixed;
+  right: 20px;
+  top: 30px;
+}
+#sticky {
+  /* 스크롤을 올려도 화면에서 사라지지 않음. */
+  background-color: blue;
+  position: sticky;
+  top: 0;
+}
+.visibility {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  background-color: lightgrey;
+  display: inline-block;
+}
+#vis1 {
+  /* 사라지지만 공간은 사라지지 않음 */
+  visibility: hidden;
+}
+#vis2 {
+  visibility: visible;
+}
+#dis1 {
+  /* 사라짐과 동시에 공간도 사라짐 
+  태그는 남아있음*/
+  display: none;
+}
+#z-outer {
+  width: 200px;
+  height: 200px;
+  background-color: #dddddd;
+  position: relative;
+}
+.z-index {
+  /* opacity : 투명도 */
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  opacity: 0.7;
+}
+#z-index1 {
+  background-color: red;
+  z-index: 1;
+  top: 20px;
+  left: 20px;
+}
+#z-index2 {
+  background-color: green;
+  z-index: 2;
+  top: 40px;
+  left: 40px;
+}
+#z-index3 {
+  background-color: blue;
+  z-index: 9999;
+}

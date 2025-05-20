@@ -1,0 +1,38 @@
+* {
+  background-color: rgb(92, 10, 168);
+  color: white;
+  font-weight: bold;
+}
+.hui {
+  border: 0.3px solid white;
+  width: 300px;
+  height: 350px;
+  text-align: center;
+  border-radius: 5%;
+  margin: auto;
+}
+#image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-size: cover;
+  background-image: url(../01_HTML/assets/hui.png);
+  position: relative;
+  top: 10px;
+  left: 75px;
+}
+#link {
+  text-decoration: none;
+  display: block;
+  border: 1px solid;
+  width: 280px;
+  height: 50px;
+  margin: 10px;
+  line-height: 50px;
+  position: relative;
+}
+#link:hover {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}

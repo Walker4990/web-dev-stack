@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: indigo;
+  background: linear-gradient(purple, pink);
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+}
+#profile-card {
+  border: 1px solid white;
+  border-radius: 20px;
+  width: 250px;
+  margin: auto;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+/* .profile-image { 
+  width: 100px;
+  height: 100px;
+  background: red;
+  margin: auto;
+  border-radius: 50%;
+  background-image: url(../01_HTML/assets/hui.png);
+  background-size: cover;
+  background-position: center;
+}*/
+
+/* img파일 활용하는방법 */
+#profile-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* -> 직사각형의 img의 사이즈를 정확하게 맞춰 줌. */
+}
+a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 1px solid white;
+  margin: 10px;
+  padding: 10px;
+}
+#profile-card a:hover {
+  background-color: white;
+  color: black;
+}
