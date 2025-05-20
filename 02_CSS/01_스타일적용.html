@@ -4,19 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>스타일적용</title>
-    <!-- head에서 적용하기 -->
+    <!-- head에서 적용하기(internal) -->
     <style>
+       
+      div > p {
+        color: red;
+        font-size: 20px;
+      }
       div {
+        
         color: blue;
       }
     </style>
-    <!-- css파일 만들어서 적용하기 -->
+    <!-- css파일 만들어서 적용하기(external) -->
     <link rel="stylesheet" href="01_스타일적용.css" />
   </head>
   <body>
-    <!-- 그때그때 입력값 넣기 -->
+    <!-- 그때그때 입력값 넣기(inline) -->
     <h1 style="color: red">Cascading Sytle Sheet</h1>
     <div>웹 페이지의 디자인을 위한 언어</div>
     <p>선택자 {속성 : 값;}</p>
   </body>
+  <!-- 우선 순위 inline > internal > external -->
+   <div>
+    <p>
+      dfjdkfjdkfdjk
+    </p>
+   </div>
 </html>
