@@ -86,12 +86,34 @@ section {
   }
 }
 .animation-once {
-  background-color: mediumturquoise;
+  background-color: rgb(107, 122, 122);
   /* animation : 애니메이션명 지속시간 속도곡선 횟수*/
   animation: bounce 1s ease-in-out 1;
 }
 .animation-alternate {
   /*  */
   background-color: indigo;
-  animation: bounce 1s ease-in-out infinite alternate;
+  animation: bounce2 1s ease-in-out infinite alternate;
+}
+.animation-reverse {
+  /* 반대로 진행되는 애니메이션 */
+  background-color: slateblue;
+  animation: bounce 10s ease-in-out reverse;
+}
+.animation-paused {
+  background-color: mediumvioletred;
+  animation: bounce2 2s linear infinite;
+}
+.animation-paused:hover {
+  animation-play-state: paused;
+}
+.perspective-container {
+  perspective: 600px;
+}
+.perspective-container .box {
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+.perspective-container .box:hover {
+  transform: rotateY(180deg);
 }
