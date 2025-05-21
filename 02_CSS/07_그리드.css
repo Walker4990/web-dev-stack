@@ -1,0 +1,92 @@
+.container {
+  background-color: darkgray;
+  display: grid;
+  gap: 10px;
+}
+.item {
+  color: white;
+  background-color: blueviolet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#grid-basic {
+  /* columns 열 개수 지정 */
+  grid-template-columns: 100px 200px 100px;
+  /* rows  */
+  grid-template-rows: 50px 30px;
+}
+#grid-gap {
+  grid-template-columns: repeat(2, 150px);
+  /*                     100px 100px 과 같음 */
+  grid-template-rows: repeat(2, 80px);
+  /* 행 간의 간격 */
+  row-gap: 50px;
+  /* 열 간의 간격 */
+  column-gap: 30px;
+}
+#grid-span {
+  grid-template-columns: 100px 1fr 2fr;
+  /* fr : flex의 grow와  비슷함. */
+  grid-template-rows: repeat(4, 50px);
+}
+#grid-span .span1 {
+  grid-column: 1 / 3;
+}
+#grid-span .span2 {
+  grid-row: 2 / 4;
+}
+#grid-area {
+  grid-template-areas:
+    "header header"
+    "nav main"
+    "nav sidebar"
+    "footbar footbar";
+}
+.header {
+  background-color: aqua;
+  grid-area: header;
+}
+.nav {
+  background-color: lightcoral;
+  grid-area: nav;
+}
+.main {
+  background-color: chartreuse;
+  grid-area: main;
+}
+.sidebar {
+  background-color: bisque;
+  grid-area: sidebar;
+}
+.footbar {
+  background-color: aquamarine;
+  grid-area: footbar;
+}
+#auto-fit {
+  /* 반응형에 사용하면 좋음 */
+  /* auto-fit : 가능한 공간만큼 채우고, 남은 칸은 collapse */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+#auto-fill {
+  /* 반응형에 사용하면 좋음 */
+  /* auto-fill : 가능한 칸 수만큼 채우고, 빈 칸도 자리 확보 */
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+.item i {
+  font-size: 2rem;
+  color: cornsilk;
+}
+#items {
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: 100px;
+  align-items: flex-end;
+  justify-items: center;
+}
+#content {
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(2, 80px);
+  height: 300px;
+  align-content: space-evenly;
+  justify-content: center;
+}
