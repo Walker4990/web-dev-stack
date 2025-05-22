@@ -1,0 +1,119 @@
+.box {
+  width: 150px;
+  height: 150px;
+  background-color: black;
+  color: whitesmoke;
+  line-height: 150px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 10px;
+}
+section {
+  display: flex;
+  justify-content: space-around;
+}
+.transition {
+  background-color: cadetblue;
+  /* transition: all 10s; 
+  property : 속성 명시, duration : 전환 시간, timing-function : 전환 속도 곡선.
+  delay : 전환 시간 지연 */
+  transition-property: all;
+  transition-duration: 1s;
+  /* 크롬 검사 탭으로 마음대로 조절 가능 */
+  transition-timing-function: ease-in-out;
+  transition-delay: 0.1s;
+  /* 위 네줄이 아래 한 줄과 같다. */
+  transition: all 1s ease-in-out;
+  /* timing-function linear : 일정한 속도 
+    검사 탭에서 원하는 속도를 설정할 수 있다.*/
+  margin: auto;
+}
+.transition:hover {
+  background-color: coral;
+  font-size: 2rem;
+  transform: scale(1.5) rotate(10deg);
+  border-radius: 50%;
+}
+/* Transform */
+.transform-scale {
+  background-color: blue;
+}
+.transform-scale:hover {
+  /* scale : 크기 확대 */
+  transform: scale(2);
+}
+.transform-rotate {
+  background: yellow;
+  color: black;
+}
+.transform-rotate:hover {
+  /* ratate : 회전(각도) */
+  transform: rotate(45deg);
+}
+.transform-translate {
+  background-color: aquamarine;
+}
+.transform-translate:hover {
+  /* translate : 이동 (x, y) */
+  transform: translate(40px, 20px);
+}
+.transform-skew {
+  background-color: darkslategray;
+}
+.transform-skew:hover {
+  /* skew : 비틀기(각도)(x, y) */
+  transform: skew(10deg, 15deg);
+}
+/* animation */
+@keyframes bounce {
+  0% {
+    transform: translate(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: translate(20px, 50px);
+  }
+}
+@keyframes bounce2 {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+.animation-once {
+  background-color: rgb(107, 122, 122);
+  /* animation : 애니메이션명 지속시간 속도곡선 횟수*/
+  animation: bounce 1s ease-in-out 1;
+}
+.animation-alternate {
+  /*  */
+  background-color: indigo;
+  animation: bounce2 1s ease-in-out infinite alternate;
+}
+.animation-reverse {
+  /* 반대로 진행되는 애니메이션 */
+  background-color: slateblue;
+  animation: bounce 10s ease-in-out reverse;
+}
+.animation-paused {
+  background-color: mediumvioletred;
+  animation: bounce2 2s linear infinite;
+}
+.animation-paused:hover {
+  animation-play-state: paused;
+}
+.perspective-container {
+  perspective: 600px;
+}
+.perspective-container .box {
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+.perspective-container .box:hover {
+  transform: rotateY(180deg);
+}

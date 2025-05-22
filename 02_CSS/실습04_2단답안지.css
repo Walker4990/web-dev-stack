@@ -1,0 +1,60 @@
+:root {
+  /* 변수지정 함수 */
+  --main-width: 240px;
+  --main-color: rgba(0, 0, 0, 0.5);
+}
+
+header {
+  color: white;
+  position: fixed;
+  width: var(--main-width);
+  height: 100%;
+  /* fixed 할때는 height - 100%하는편 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--main-color);
+  background-image: url(assets/background.jpg);
+  background-blend-mode: color;
+  /* 이미지와 색을 조합하는 코드 
+    rbga로 조정*/
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+}
+header h1 {
+  padding-top: 20px;
+  font-size: 4rem;
+  border-bottom: 2px solid white;
+  padding-inline: 10px;
+  /* 밑줄대신 사용가능
+        padding-inline : border 길이 증가 가능 */
+}
+header nav {
+  display: flex;
+  flex-direction: column;
+  text-decoration: underline;
+  padding-bottom: 150px;
+  gap: 10px;
+}
+main {
+  padding: 10px;
+  padding-left: calc(var(--main-width) + 20px);
+  text-align: center;
+}
+main h2,
+main p {
+  text-align: left;
+}
+main h2 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+main img {
+  width: 100%;
+  max-width: 400px;
+  /* 최대 width값 지정 */
+
+  margin-top: 15px;
+  margin-bottom: 10px;
+}

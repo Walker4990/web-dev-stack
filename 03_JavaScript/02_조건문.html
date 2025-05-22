@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>조건문</h1>
+    <h2>1. if / else</h2>
+    <script>
+      /*
+                if (조건) {
+                    조건이 true인 경우
+                } else {
+                    조건이 false인 경우
+                }
+                    else 생략 가능
+            */
+      let age = 18;
+      if (age > 19) {
+        console.log("성인");
+      } else {
+        console.log("미성년자");
+      }
+
+      // 삼항 연산자 : 조건 ? "조건이 TRUE" : "조건이 FALSE"
+      age = 20;
+      const result = age > 19 ? "성인" : "미성년자";
+      console.log(result);
+    </script>
+    <h2>2. else if</h2>
+    <script>
+      /*
+        if (조건 1) {
+            조건 1이 TRUE
+        } else if(조건 2) {
+            (조건 1이 FALSE이면서) 조건 2가 TRUE 
+        } else {
+            모든 조건이 FALSE 
+        }
+        */
+      // 20세 이상이면 성인, 14세 이상이면 청소년, 8살 이상이면 어린이, 그 외에는 유아
+      //   age = prompt("나이를 입력해주세요."); : 입력창 생성
+      let result2;
+      if (age >= 20) {
+        result2 = "성인";
+      } else if (age >= 14) {
+        // 14<=age<20
+        result2 = "청소년";
+      } else if (age >= 8) {
+        // 8<=age<14
+        result2 = "어린이";
+      } else {
+        // 8> age
+        result2 = "청소년";
+      }
+      console.log(result2);
+      //   console.log(
+      // age >= 20 ? "성인" : age >= 14 ? "청소년" : age >= 8 ? "어린이" : "유아"
+      //   );
+    </script>
+    <h2>3. switch</h2>
+    <script>
+      /*
+            switch (Data) {
+                case 조건A(값):
+                    조건 A가 true
+                    break;
+                case 조건B(값):
+                    조건 B가 true
+                    break;
+                default :
+                    모든 조건이 false
+            }
+        */
+      // number 값이 짝수이면 "짝수", 홀수이면 "홀수", 그게아니면 숫자가 아닙니다.
+      let result3;
+      //   const number = prompt("숫자를 입력하세요");
+      const number = 1;
+      if (number % 2 === 0) {
+        result3 = "짝수";
+      } else if (number % 2 !== 0) {
+        result3 = "홀수";
+      } else {
+        result3 = "숫자 x";
+      }
+      console.log(result3);
+
+      let result4;
+      switch (number % 2) {
+        case 0:
+          result4 = "짝수";
+          break;
+        case 1:
+          result4 = "홀수";
+          break;
+        default:
+          "숫자가 아닙니다";
+      }
+      console.log(result4);
+    </script>
+    <h2>4. 중첩 if</h2>
+    <script>
+      // 조건문 안에 조건문을 넣은 형태
+      // ID가 user1, 비밀번호가 1234 인 경우만 "로그인 성공"
+      // 비밀번호가 틀리면 "비밀번호 오류"
+      // 아이디가 틀리면 "아이디 오류"
+      let ID = "user1";
+      let PW = "1234";
+
+      //   if (
+      //     prompt("아이디를 입력하세요") === "user1" &&
+      //     prompt("비밀번호를 입력하세요") === "1234"
+      //   ) {
+      //     console.log("로그인 성공");
+      //   } else if (prompt("비밀번호를 입력하세요") !== "1234") {
+      //     console.log("비밀번호 오류");
+      //   } else if (prompt("아이디를 입력하세요") !== "user1") {
+      //     console.log("아이디 오류");
+      //   } 내가한거
+
+      //ID = prompt("아이디를 입력해주세요.");
+
+      if (ID === "user1") {
+        //  PW = prompt("비밀번호를 입력해주세요.");
+        if (PW === 1234) {
+          console.log("로그인 성공");
+        } else if (id === "") {
+          console.log("아이디를 입력하지 않았습니다.");
+        }
+      } else {
+        console.log("아이디 오류");
+      }
+
+      if (ID === "user1" && PW === "1234") {
+        console.log("로그인 성공");
+      } else if (PW !== "1234") {
+        console.log("비밀번호 오류");
+      } else if (ID !== "user1") {
+        console.log("아이디 오류");
+      } //강사님이 한거
+
+      // if (ID === "user1") {
+      //   if (PW === "1234") {
+      //     console.log("로그인 성공");
+      //   }
+      // } else {
+      //   console.log("비밀번호 오류");
+      // } else {
+      //   console.log("아이디 오류")
+      // }
+
+      //   if (
+      //     ((ID = prompt("아이디를 입력하세요")),
+      //     (pw = prompt("비밀번호를 입력하세요.")))
+      //   ) {
+      //     if (((ID = ID), (PW = PW))) result5 = "로그인 성공";
+      //     if (((ID = ID), PW != PW)) result5 = "비밀 번호 오류";
+      //     if ((ID != ID, (PW = PW))) result5 = "아이디 오류";
+      //   }
+      //console.log(result5);
+    </script>
+    <h2>5. break가 없는 switch</h2>
+    <script>
+      const fruit = "banana";
+
+      switch (fruit) {
+        case "apple":
+          console.log("사과");
+        case "orange":
+          console.log("오렌지");
+        case "banana":
+          console.log("바나나");
+        case "kiwi":
+          console.log("키위");
+      }
+      // break없는 switch문은 걸리는 것부터 끝날때까지 다 나옴.
+    </script>
+  </body>
+</html>

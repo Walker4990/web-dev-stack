@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>변수와 연산자</h1>
+    <h2>1. var, let, const</h2>
+    <script>
+      // 변수 : 값을 담는 공간
+      // 변수명 = 값
+      // var : 예전 버전 (가급적 사용 X)
+      var oldVar = 1234;
+      oldVar = "변경";
+      // 재할당이 가능하다.
+      console.log(oldVar);
+
+      // let : 일반 변수 선언 (개발할때 사용빈도 : 가끔)
+      let nickname = "성예찬";
+      nickname = "이상엽";
+      console.log(nickname);
+
+      //const : 상수 선언 -> 상수 변경 불가 (개발할때 사용빈도 : 자주)
+      // 외부 조작시 방어 차원에서 좋다.
+      const name = "조규상";
+      // name = "최다인";
+      console.log(name);
+    </script>
+    <h2>2. 자료형과 typeof</h2>
+    <!-- 한 페이지의 Script는 공유됨.
+        let과 const는 재정의 불가-->
+    <script>
+      const userID = "최다인"; //문자열 - string
+      const age = 15; // 숫자 - number
+      const check = true; //true, false - 논리형 = boolean 값
+      let unknown; // 값이 정의되지 않음 - undefined (그냥 없음)
+      let isNone = null; //값이 없음 - null (형태는 있음, 내용물은 없음)
+      console.log(typeof userID);
+      console.log(age);
+      console.log(typeof check);
+      console.log(unknown);
+      console.log(isNone);
+      //typeof : 변수 타입 체크
+      let test = "test";
+      console.log(typeof test);
+      test = 123;
+      test = false;
+      console.log(typeof test);
+    </script>
+    <h2>3. 문자열 & 템플릿 리터럴</h2>
+    <script>
+      const hobby = "음악";
+      console.log("내 취미는 " + hobby + "입니다.");
+      //아래가 템플릿형식
+      console.log(`내 취미는 ${hobby}입니다.`);
+      // \n : 줄 바꿈, \ + 특수문자 : 특수문자 입력가능
+      const escape = '내 이름은\n "문채은"입니다.';
+      console.log(escape);
+    </script>
+    <h2>4. 숫자</h2>
+    <script>
+      const num1 = 10;
+      const num2 = 3;
+      console.log("더하기 : ", num1 + num2); // 13
+      console.log("빼기 : ", num1 - num2); // 7
+      console.log("곱하기 : ", num1 * num2); // 30
+      console.log("나누기 : ", num1 / num2); // 3.33333333...
+      console.log("나머지 : ", num1 % num2); // 1
+      console.log("제곱 : ", num1 ** num2); // 1000
+
+      // 문자열 -> 숫자
+      console.log(Number("100"));
+      console.log(Number("Hello")); // NaN
+
+      // 숫자 -> 문자열
+      console.log(String(300));
+      // 소수 제거 -> 정수
+      console.log(parseInt(3.9)); // 3
+
+      // 문자열 -> 실수
+      console.log(parseFloat("4.2"));
+    </script>
+    <h2>5. Boolean과 비교 연산자</h2>
+    <script>
+      console.log(true);
+      console.log(false);
+
+      // Boolean 변환
+      console.log(Boolean("World"));
+      console.log(Boolean("")); // 문자열에선 비어있는 경우만 false, 나머지는 true
+
+      console.log(Boolean(0)); // 숫자 0만 false, 나머지는 true
+      console.log(Boolean(1));
+
+      const a = 100;
+      const b = "100";
+      // == 100이랑 100이랑 같아? 같네~(타입 확인 X)
+      console.log(a == b); //true
+
+      //숫자 100이랑 문자 100이랑 같아? 아닌데 (타입 확인 O)
+      console.log(a === b); // false
+      console.log(a === Number(b)); //true
+
+      // !=, !== : 같지 않니?
+      console.log(a != b); //false
+      console.log(a !== b); //true 아닌게 맞다.라는 뜻 (!=)=의 느낌
+
+      const c = 200;
+      console.log(a < c); //true
+      console.log(a > c); //false
+      console.log(a >= c); //false
+      console.log(a <= c); //true
+
+      // 연습
+      console.log("0" == 0); //true
+      console.log("0" === 0); //false
+      console.log(Boolean("")); // false
+      console.log(Boolean("0")); //true
+    </script>
+    <h2>6. 논리 연산자</h2>
+    <!-- 여러가지 로그인 방법에서 활용 -->
+    <script>
+      const x = 10;
+      const y = 20;
+
+      // and : 둘 다 true -> true
+      console.log(x < 15 && y > 10); //true
+      console.log(x > 15 && y > 10); //false
+      //   or : 둘 중에 하나만 true -> true
+      console.log(x < 15 || y > 10); // true
+      // not(!) : 부정연산자
+      console.log(!false); // true
+      console.log(!!true); // true
+      //&&(그리고) : 양 쪽다 true -> 뒷쪽 출력
+      // 앞에가 거짓? -> 거짓인 값 출력
+      console.log("JavaScript" && 12345);
+      console.log("" && 12345);
+      console.log(null || "JS");
+    </script>
+  </body>
+</html>

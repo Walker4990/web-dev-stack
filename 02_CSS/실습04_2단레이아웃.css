@@ -1,0 +1,65 @@
+header {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-image: url(assets/background.jpg);
+  background-size: cover;
+  background-position: bottom;
+  color: white;
+  width: 15rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+}
+
+header h1 {
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+header nav {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: underline;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+h2 {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 1.7rem;
+  font-weight: bold;
+  padding-left: 250px;
+  padding-top: 10px;
+}
+section {
+  padding-left: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+section img {
+  width: 60%;
+  display: flex;
+  text-align: center;
+}
+section p {
+  padding-top: 15px;
+  text-align: justify;
+}
+/* 메모
+1.한줄에 있는 것들은 하나로 묶는다.
+2.섹션별로 나눈다.
+3. 공통된 것들을 선정한다
+4. flex속성들은 반드시 flex속성이 있어야 먹힌다.
+5. 어떤 것을 밀어낼땐 padding사용 */
