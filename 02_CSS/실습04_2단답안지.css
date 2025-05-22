@@ -7,7 +7,6 @@
 header {
   color: white;
   position: fixed;
-
   width: var(--main-width);
   height: 100%;
   /* fixed 할때는 height - 100%하는편 */
