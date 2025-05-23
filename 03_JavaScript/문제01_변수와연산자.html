@@ -6,13 +6,24 @@
     <title>변수 & 연산자 연습문제</title>
   </head>
   <body>
+    <!-- 
+      변수 명명 규칙
+      1. 문자, 숫자, 기호는 $, _만 사용
+      2. 첫글자에는 숫자 금지
+      3. 예약어(const, if, switch...) 금지
+      4. 표기법대로 사용 - camelCase(낙타표기법) ex) userId
+      5. 상수 (const로 표시한것 X)는 대문자만 사용 + SNAKE_CASE(언더바 표기법)
+
+    -->
     <h1>변수 & 연산자 연습문제</h1>
     <ol style="line-height: 2">
       <li>
         킬로그램(kg)을 파운드(lb)로 환산하여 console에 출력하시오. (1kg = 2.2lb)
         <script>
           const kg = 60;
-          console.log(kg * 2.2 + "lb");
+          const lb = kg * 2.2;
+          console.log(lb);
+          // console.log(kg * 2.2 + "lb");
         </script>
       </li>
 
@@ -20,7 +31,8 @@
         제곱미터(㎡)를 평(평수)으로 환산하여 출력하시오. (1㎡ = 0.3평)
         <script>
           const m2 = 99;
-          console.log(m2 * 0.3 + "평");
+          const m3 = m2 * 0.3;
+          console.log(m3);
         </script>
       </li>
 
@@ -30,7 +42,9 @@
           const upper = 10;
           const lower = 14;
           const height = 4;
-          console.log(((upper + lower) / 2) * height);
+          const area = ((upper + lower) / 2) * height;
+          console.log(area);
+          // console.log(((upper + lower) / 2) * height);
         </script>
       </li>
 
@@ -39,7 +53,8 @@
         <script>
           const x = 12000000;
           const y = 0.04;
-          console.log((x * y) / 12);
+          const z = (x * y) / 12;
+          console.log(z);
         </script>
       </li>
 
@@ -48,7 +63,8 @@
         <script>
           const year = 2025;
           const age = 55;
-          console.log(year - age + 1);
+          const BM = year - age + 1;
+          console.log(BM);
         </script>
       </li>
 
@@ -56,10 +72,14 @@
         아이스 아메리카노 한 잔 5,500원, 가진 돈이 15,000원일 때 최대 몇 잔,
         잔돈은 얼마?
         <script>
-          const ii = 5500;
+          const i = 5500;
           const money = 15000;
-          console.log(parseInt(money / ii) + "잔");
-          console.log((money % ii) + "원");
+          const ia = parseInt(money / i) + "잔";
+          const lm = (money % i) + "원";
+          console.log(ia);
+          console.log(lm);
+          /*console.log(parseInt(money / ii) + "잔");
+          console.log((money % ii) + "원");*/
         </script>
       </li>
 
@@ -70,7 +90,14 @@
           const lamb = 12000;
           const drink = 2000;
           const service = -2000;
-          console.log(lamb * 64 + drink * 12 + service * 6 + "원");
+          const lambNumber = 64;
+          const drinkNumber = 6;
+          const serviceNumber = parseInt(lambNumber / 10);
+          const total =
+            lamb * lambNumber + drink * drinkNumber + service * serviceNumber;
+          console.log(total);
+          /*const price = lamb * 64 + drink * 6 + service * 6 + "원";
+          console.log(price);*/
         </script>
       </li>
 
@@ -110,6 +137,7 @@
           const t2 = 100;
           console.log(t1 == t2);
           console.log(t1 === t2);
+          // ===와 친해지기
         </script>
       </li>
     </ol>
