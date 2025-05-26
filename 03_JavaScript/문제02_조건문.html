@@ -34,7 +34,7 @@
         정수가 10과 20 사이인지 판별하시오.
         <script>
           const int = 1;
-          if (10 <= int && int <= 20) {
+          if (10 < int && int < 20) {
             console.log("맞다.");
           } else {
             console.log("아니다.");
@@ -47,9 +47,7 @@
         출력하시오.
         <script>
           const age = 70;
-          if (age < 8) {
-            console.log("무료");
-          } else if (age > 65) {
+          if (age < 8 || age >= 65) {
             console.log("무료");
           } else {
             console.log("10,000원");
@@ -61,9 +59,9 @@
         월을 입력받아 계절을 출력하시오. (3~5: 봄, 6~8: 여름, 9~11: 가을, 12~2:
         겨울)
         <script>
-          // const month = prompt(요일을 입력하세요)
-          const month = 1;
-          if (2 < month && month < 6) {
+          // const month = prompt(몇월인지 숫자로 입력하세요)
+          //const month = 1;
+          /* if (2 < month && month < 6) {
             console.log("봄");
           } else if (5 < month && month < 9) {
             console.log("여름");
@@ -71,6 +69,40 @@
             console.log("가을");
           } else {
             console.log("겨울");
+          } 내가한거 */
+
+          // 답안
+          const month = Number(prompt("몇 월입니까? (숫자만 입력하세요)"));
+          if (3 <= month && month <= 5) {
+            console.log("봄");
+          } else if (6 <= month && month <= 8) {
+            console.log("여름");
+          } else if (9 <= month && month <= 11) {
+            console.log("가을");
+          } else if (month === 12 || month === 1 || month === 2) {
+            console.log("겨울");
+          }
+          switch (month) {
+            case 3:
+            case 4:
+            case 5:
+              console.log("봄");
+              break; // break 로 범위 설정을 해준다.
+            case 6:
+            case 7:
+            case 8:
+              console.log("여름");
+              break;
+            case 9:
+            case 10:
+            case 11:
+              console.log("가을");
+              break;
+            case 12:
+            case 1:
+            case 2:
+              console.log("겨울");
+              break;
           }
         </script>
       </li>
@@ -80,15 +112,15 @@
         F)
         <script>
           const score = 10;
-          if (score > 90) {
+          if (score >= 90 && score >= 100) {
             console.log("A");
-          } else if (score > 80) {
+          } else if (score >= 80) {
             console.log("B");
-          } else if (score > 70) {
+          } else if (score >= 70) {
             console.log("C");
-          } else if (score > 60) {
+          } else if (score >= 60) {
             console.log("D");
-          } else {
+          } else if (score < 60 && score >= 0) {
             console.log("F");
           }
         </script>
@@ -97,29 +129,46 @@
       <li>
         숫자를 입력받아 요일을 출력하시오. (1: 월요일 ~ 7: 일요일)
         <script>
-          // const day = prompt("숫자를 입력하세요");
-          if (day < 2) {
+          const day = Number(prompt("숫자를 입력하세요"));
+          if (day === 1) {
             console.log("월요일");
-          } else if (day < 3) {
+          } else if (day === 2) {
             console.log("화요일");
-          } else if (day < 4) {
+          } else if (day === 3) {
             console.log("수요일");
-          } else if (day < 5) {
+          } else if (day === 4) {
             console.log("목요일");
-          } else if (day < 6) {
+          } else if (day === 5) {
             console.log("금요일");
-          } else if (day < 7) {
+          } else if (day === 6) {
             console.log("토요일");
-          } else {
+          } else if (day === 7) {
             console.log("일요일");
           }
+
+          let day1;
+          if (day === 1) day1 = "월";
+          else if (day === 2) day1 = "화";
+          else if (day === 3) day1 = "수";
+          else if (day === 4) day1 = "목";
+          else if (day === 5) day1 = "금";
+          else if (day === 6) day1 = "토";
+          else if (day === 7) day1 = "일";
+          console.log(`${day1}요일`);
+
+          if (day !== undefined) console.log(`${day1}요일`);
+
+          //배열로 풀기
+          const days = ["월", "화", "수", "목", "금", "토", "일"];
+          const result = days[day - 1];
+          console.log(`${result !== undefined ? result + "요일" : ""} `);
         </script>
       </li>
-
+      3
       <li>
         두 수와 연산자를 입력받아 사칙연산 결과를 출력하시오.
         <script>
-          let num1 = 1;
+          /* let num1 = 1;
           let num2 = 2;
           const operater = "+";
           switch (operater) {
@@ -136,7 +185,27 @@
               result = num1 / num2;
               break;
           }
-          console.log(result);
+          console.log(result); */
+
+          const num1 = Number(prompt("숫자 1 입력"));
+          const num2 = Number(prompt("숫자 2 입력"));
+          const op = propt("연산자 입력");
+          let result2;
+          switch (op) {
+            case "+":
+              result2 = num1 + num2;
+              break;
+            case "-":
+              result2 = num1 - num2;
+              break;
+            case "/":
+              result2 = num1 / num2;
+              break;
+            case "*":
+              result2 = num1 * num2;
+              break;
+          }
+          console.log(`${num1} ${op} ${num2} =  ${result2}`);
         </script>
       </li>
 
@@ -157,14 +226,13 @@
       <li>
         3개의 수 중 가장 큰 수를 출력하시오.
         <script>
-          let a1 = 1;
-          let a2 = 2;
-          let a3 = 3;
-          if (a1 - a2 < 0) {
-            if (a2 - a3 < 0) {
-              console.log("a3이 가장 크다!");
-            }
-          }
+          const n1 = 56;
+          const n2 = 86;
+          const n3 = 43;
+          let max = n1;
+          if (max < n2) max = n2;
+          if (max < n3) max = n3;
+          console.log("최대값: ", max);
         </script>
       </li>
 
@@ -173,8 +241,8 @@
         아닌지 판별하시오.
         <script>
           let P = 6;
-          if (P % 3 == 0) {
-            if (P % 5 == 0) {
+          if (P % 3 === 0) {
+            if (P % 5 === 0) {
               result = "둘 다";
             }
           } else if (P % 5 !== 0) {
@@ -185,6 +253,16 @@
             result = "둘다 아님";
           }
           console.log(result);
+          // 강사님 Ver.
+          if (P % 3 === 0 && P % 5 === 0) {
+            console.log("둘 다");
+          } else if (p % 3 === 0) {
+            console.log("3의 배수");
+          } else if (p % 5 === 0) {
+            console.log("5의 배수");
+          } else {
+            console.log("둘다아님");
+          }
         </script>
       </li>
 
@@ -205,7 +283,10 @@
       <li>
         4자리 정수가 주어졌을 때, 첫 번째 자리수가 짝수인지 홀수인지 판별하시오.
         <script>
-          let int4 = 4444;
+          const number5 = 1032;
+          const first = parseInt(number5 / 1000);
+          if (fitst % 2 === 0) console.log("짝수");
+          else console.log("홀수");
         </script>
       </li>
     </ol>
