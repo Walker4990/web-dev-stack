@@ -41,7 +41,82 @@
         },
       };
       console.log(personObj);
-      personObj.hello();
+      personObj.hello(); // 함수 괄호 있고 없고의 차이.
+      console.log(personObj.name); // 변수
+    </script>
+    <h2>1. 객체 생성과 속성/함수 추가</h2>
+    <script>
+      const person1 = {};
+      person1.name = "우규빈"; // 보통 이걸 사용.
+      person1["age"] = 9;
+      person1.hello = function () {
+        console.log(`안녕? 나는 ${this.name}이고, ${this.age}살이야`);
+      };
+      person1.hello();
+
+      const person2 = new Object(); // 위랑 동일하므로 사용 권장 X
+      person2.name = "김은진";
+      person2.age = 7;
+      person2.hello = function () {
+        console.log(`안녕? 나는 ${this.name}이고, ${this.age}살이야`);
+      };
+      person2.hello();
+    </script>
+    <h2>2. this</h2>
+    <script>
+      const objFunc = {
+        name: "서지은",
+        func: function () {
+          console.log(this);
+          console.log(`익명함수: ${this.name}`);
+        },
+      };
+      const objArrow = {
+        name: "박지연",
+        func: () => {
+          console.log(this); // 외부 this (전역 객체 - Window)
+          // this 접근 불가
+          console.log(`화살표함수 : ${this.name}`);
+        },
+      };
+      objFunc.func();
+      objArrow.func();
+
+      // METHOD 축약형 (Method Shorthand)
+      const objMethod = {
+        name: "이승민",
+        func() {
+          console.log(`메서드 축약형 ${this.name}`);
+        },
+      };
+      objMethod.func();
+    </script>
+
+    <h2>3. 생성자 함수 & 클래스</h2>
+    <script>
+      // 생성자 함수 (함수명 대문자 시작)  : 같은 구조면 생성자함수를 통해 설정 가능
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.hello = function () {
+          console.log(`안녕? 나는 ${this.name}이고, ${this.age}살이야`);
+        };
+      }
+      const p1 = new Person("오재덕", 5);
+      const p2 = new Person("장효준", 3);
+      p1.hello();
+      p2.hello();
+
+      // 클래스
+      class Person2 {
+        //constructor : 클래스 객체를 생성할 때 호출되는 함수
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+      }
+
+      const p3 = new Person2("전영현", 2);
     </script>
   </body>
 </html>

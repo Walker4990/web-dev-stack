@@ -21,8 +21,11 @@
       <li>
         구구단 2단을 출력하시오.
         <script>
-          for (let i = 2; i < 20; i += 2) {
-            console.log(i);
+          // for (let i = 2; i < 20; i += 2) {
+          //   console.log(i);
+          // }
+          for (let i = 1; i <= 9; i++) {
+            console.log(`2 * ${i}= ${2 * i}`);
           }
         </script>
       </li>
@@ -30,19 +33,20 @@
       <li>
         1부터 사용자에게 입력받은 숫자까지의 합을 출력하시오. (prompt 사용)
         <script>
-          /* let input = prompt("숫자를 입력하세요.");
-
-          for (let j = 1; i == ; ) break;
-
-          console.log(i);*/
+          let total = 0;
+          const input = Number(prompt("숫자를 입력해주세요."));
+          for (i = 1; i <= input; i++) {
+            total += i;
+          }
+          console.log("total:", total);
         </script>
       </li>
 
       <li>
         1부터 100까지의 수 중 3의 배수만 출력하시오.
         <script>
-          for (let i = 0; i < 100; i += 3) {
-            console.log(i);
+          for (let i = 1; i <= 100; i++) {
+            if (i % 3 === 0) console.log(i);
           }
         </script>
       </li>
@@ -51,9 +55,9 @@
         주어진 숫자 배열에서 짝수만 출력하는 반복문을 작성하시오.
         <script>
           const numbers = [12, 7, 9, 20, 33, 16];
-
-          for (let i = 0; i <= numbers.length; i++) {
-            if (numbers[i] % 2 == 0) console.log(numbers[i]);
+          // 배열과 반복문이 만나면 초기값은 0으로 설정하는게 편하다.
+          for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i] % 2 === 0) console.log(numbers[i]);
           }
         </script>
       </li>
@@ -73,10 +77,16 @@
         배열에서 가장 큰 숫자를 찾아 출력하시오.
         <script>
           const nums = [3, 45, 21, 99, 18, 77];
-          nums.sort((a, b) => b - a);
-          for (const maxNums in nums) {
+          /* nums.sort((a, b) => b - a);
             console.log(nums[0]);
+          */
+          let max = nums[0];
+          for (let i = 0; i < nums.length; i++) {
+            if (nums[i] > max) max = nums[i];
           }
+          console.log("가장 큰 숫자 : ", max);
+
+          console.log(Math.max(...nums));
         </script>
       </li>
 
@@ -84,7 +94,8 @@
         break와 continue를 사용하여 1~10 사이 홀수만 출력하되, 7이 나오면
         멈추도록 구현하시오.
         <script>
-          for (let i = 1; i < 10; i += 2) {
+          for (let i = 1; i < 10; i++) {
+            if (i % 2 === 0) continue;
             console.log(i);
             if (i == 7) break;
           }
@@ -100,15 +111,27 @@
         - 정답을 맞추면 시도 횟수와 함께 종료 메시지를 출력하시오.
         <script>
           const target = Math.floor(Math.random() * 100) + 1; // 1~100 랜덤 숫자
-
+          console.log(target);
+          let count = 0;
           while (true) {
-            let input = prompt("숫자를 입력하세요");
-            if (input === target) break;
-            {
-              console.log("정답입니다.");
+            count++;
+            const answer = Number(prompt("1~100까지 숫자를 입력해주세요."));
+            if (answer > target) alert("너무 큽니다.");
+            else if (answer < target) alert("너무 작습니다.");
+            else {
+              console.log(`${count}번만에 성공!`);
+              break;
             }
           }
-          console.log(target);
+
+          // while (true) {
+          //   // let input = prompt("숫자를 입력하세요");
+          //   if (input === target) break;
+          //   {
+          //     console.log("정답입니다.");
+          //   }
+          // }
+          //console.log(target);
         </script>
       </li>
     </ol>

@@ -34,12 +34,9 @@
         <script>
           const music = ["가요", "팝송", "클래식", "재즈", "OST"];
           // [팝송, 클래식, 재즈]
-          music.pop();
-          music.shift();
-          console.log(music);
+          console.log(music.slice(1, 4));
           // [OST]
-          music.splice(0, 3, "OST");
-          console.log(music);
+          console.log(music[music.length - 1]);
         </script>
       </li>
 
