@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 100vh;
+}
+#current {
+  font-size: 2rem;
+  font-weight: bold;
+}
+#time {
+  font-size: 3rem;
+  font-weight: bold;
+}
+#count {
+  font-size: 2rem;
+  font-weight: bold;
+}
+#eng,
+#kor {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

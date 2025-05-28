@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EVENT</title>
+    <script src="09_이벤트.js"></script>
+    <style>
+      .box {
+        width: 200px;
+        height: 100px;
+        background-color: navy;
+        color: white;
+        line-height: 100px;
+        text-align: center;
+        margin: 10px;
+      }
+      section {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>이벤트</h1>
+    <h2>1. 클릭 이벤트</h2>
+    <section>
+      <div id="click" class="box">Click!</div>
+      <div id="double" class="box">Double Click!</div>
+      <div id="right" class="box">right Click!</div>
+      <div id="hover" class="box">Hover!</div>
+    </section>
+    <h2>2. 폼 이벤트</h2>
+    <section>
+      <input type="text" id="input" />
+      <p id="inputResult"></p>
+    </section>
+  </body>
+</html>

@@ -66,4 +66,99 @@ WHERE절에서 일부 데이터를 제거하고,
 GROUP BY와 HAVING을 통해서 특정 조건을 만족시키고,
 SELECT에서 출력을 한 데이터를 ORDER BY 절을 수행한다.
 
+모든 데이터 타입 정렬 가능, 성능저하의 요인임.
+ASC : 오름차순 DEFAULT / DESC : 내림차순
+SELECT EMPNO, ENAME, SAL FROM EMP
+ORDER BY 3 ASC; --> 3 = SAL을 가르킴
+4라고 나오면 에러 발생함.
+
+출력되지 않는 컬럼도 정렬이 가능
+복수 컬럼 정렬도 가능
+SAL DESC, ENAME ASC; -> SAL 내림 차순 정렬하고, ENAME 오름차순 정렬을 수행한다.
+
+집계함수 :
+SUM
+AVG
+COUNT COUNT(*) - > NULL을 포함하여 연산한다.(행의 수 세기 때문에)
+MAX
+MIN
+
+집계함수 FROM, WHERE 사용불가
+
+GROUP BY : 개체수준의 속성들이 그룹수준의 속성으로 변함.
+개체 : EMPNO, DEPTNO ...
+그룹 : COUNT(), SUM() ...
+
+GROUP BY NULL -> 전체 행들을 하나의 그룹으로 보겠다.
+
+그룹함수 
+ROLLUP(A,B) =  GROUPING SETS(A,B) + GROUPING SETS(A) + GROUPING SETS(NULL)
+                ->GROUP BY A,B         ->GROUP BY A         GROUP BY NULL
+인수 자리 변경 불가
+
+CUBE(A,B) = GROUP BY A,B + GROUP BY A + GROUP BY B + GROUP BY NULL
+인수 자리 변경 가능
+
+윈도우함수
+RANK : 동순 인정, 중복시 건너뜀1,2,2,4...
+DENSE_RANK : 동순 인정, 중복시 다음순서 출력 1,2,2,3...
+ROW_NUMBER : 동순 인정 X 1,2,3,4...
+
+ROWS / RANGES
+- UNBOUNDED PRECEDING
+-PRECEDING 이전의 행
+-CURRENT ROW 현재 행
+-FOLLOWING 이후의 행
+-UNBOUNDED FOLLOWING
+
+RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW : DEFAULT
+
+FIRST_VALUE : 첫 번째 값 / LAST_VALUE : 가장 나중에 나오는 값
+
+LAG(값 , 숫자1, 숫자2) : 현재 행 이전 데이터 가져옴 
+:숫자1 이전의 행 출력, 숫자 1없으면 숫자 2 출력  
+ LEAD : 현재 행 이후 데이터를 가져옴
+:숫자1 이후의 행 출력, 숫자 1없으면 숫자 2 출력
+
+비율관련 함수 다시보기
+
+조인
+- INNER JOIN 
+FROM A,B
+WHERE B.DEPTNO = A.DEPTNO
+
+FROM A (INNER) JOIN B
+ON B.DEPTNO = A.DEPTNO
+
+- NATURAL JOIN
+USING, ON, WHERE 절 서술X
+공통 컬럼 한번 출력
+
+OUTER JOIN
+테이블을 갈리게 만들어서 한번 보자
+EX
+1
+2       2
+3       3
+        4
+
+(+)의 반대편에 있는 외부조인이다.
+EX
+WHERE A = B (+) -> LEFT OUTER JOIN
+      B (+)=A -> RIGHT OUTER JOIN
+
+SELF JOIN
+
+부모 -> 자식 방향 : 순방향 전개
+
+SELECT A.EMPNO, A.ENAME, B.EMPNO, B.ENAME
+FROM EMP A, EMP B
+WHERE A.EMPNO=B.MGR
+-> A의 직원 번호는 B의 상사번호다 : A= 상사/ B=직원
+
+
+SELECT A.EMPNO, A.ENAME, B.EMPNO, B.ENAME
+FROM EMP A, EMP B
+WHERE A.MGR=B.EMPNO
+A의 상사번호가 B의 직원번호다. : A=직원 /  B=상사
 
