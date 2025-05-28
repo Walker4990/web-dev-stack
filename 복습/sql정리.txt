@@ -162,3 +162,5 @@ FROM EMP A, EMP B
 WHERE A.MGR=B.EMPNO
 A의 상사번호가 B의 직원번호다. : A=직원 /  B=상사
 
+계층형 질의
+
