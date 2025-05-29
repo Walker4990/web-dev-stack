@@ -1,0 +1,39 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+section {
+  border: 1px solid lightgray;
+  width: 45%;
+  height: 70vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+section p {
+  color: lightgray;
+  text-align: left;
+  /* background: pink; */
+  width: 90%;
+}
+input {
+  width: 90%;
+  height: 25px;
+  border: 0.5px solid lightgray;
+  border-radius: 5px;
+}
+article button {
+  border: none;
+  font-size: 1rem;
+  background-color: rgb(202, 198, 198);
+  color: white;
+  border-radius: 5px;
+  padding: 3px 10px;
+}
+button:last-child {
+  background-color: lightseagreen;
+}
