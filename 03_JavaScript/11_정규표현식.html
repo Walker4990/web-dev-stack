@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>정규표현식 (Regular Expression)</h1>
+    <p>문자열에서 특정 패턴을 찾거나, 대체하거나, 나누는 도구</p>
+
+    <h2>기본 메타문자</h2>
+    <ul></ul>
+    <script>
+      // ^ : 문자열의 시작
+      const patternStart = /^H/; // H로 시작하는지 확인
+      console.log("^ 테스트 : ", patternStart.test("Hello"));
+
+      // $ : 문자열의 끝
+      const patternEnd = /d$/; // d로 끝나는지 확인
+      console.log("$ 테스트 : ", patternEnd.test("world"));
+
+      // . : 임의의 한 문자
+      const patternDot = /H.llo/; // 영문 숫자 공백 특수기호 다 포함한 한글자
+      console.log(". 테스트", patternDot.test("H llo"));
+
+      // * : 앞 문자가 0회 이상 반복
+      const patternStar = /abc*d/; // c가 없어도 되고 여러개 있어도 상관없음
+      console.log("* 테스트 : ", patternStar.test("abcd"));
+
+      // + : 앞 문자가 1회 이상 반복
+      const patternPlus = /abc+d/; // c가 한개 이상은 무조건 있어야함.
+      console.log("+ 테스트 : ", patternPlus.test("abcd"));
+
+      // ? : 앞 문자가 0~1회
+      const patternQ = /colo?r/; // o가 0개 or 1개만 허용
+      console.log("? 테스트 : ", patternQ.test("color"));
+
+      // {m,n} : 최소 m ~ 최대 n회 반복 (띄어쓰기 금지)
+      const patternRepeat = /^a{2,4}$/; // a가 두글자 이상 4글자 이하 허용
+      console.log("{m,n} 테스트 :", patternRepeat.test("aaaa"));
+
+      // [] : 문자셋
+      const patternSet = /^[a-z]{2,5}$/;
+      console.log("[] 테스트 : ", patternSet.test("aazaa"));
+    </script>
+  </body>
+</html>

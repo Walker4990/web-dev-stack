@@ -73,7 +73,30 @@
         naviInfo.innerHTML = `
                 <ul>
                     <li>userAgent : ${navigator.userAgent} -브라우저 정보</li>
+                    <li>platform : ${navigator.platform} - 운영체제 정보</li>
+                    <li>language : ${navigator.language} - 브라우저 언어</li>
                 </ul>`;
+      };
+    </script>
+
+    <h2>history</h2>
+    <p>방문 기록을 앞뒤로 이동 가능</p>
+    <button onclick="history.back()">뒤로</button>
+
+    <button onclick="history.forward()">앞으로</button>
+
+    <h2>screen</h2>
+    <p>사용자의 화면 해상도와 색상 정보 제공</p>
+    <button onclick="showScreen()">화면 정보 확인</button>
+    <div id="screenInfo"></div>
+    <script>
+      const showScreen = () => {
+        screenInfo.innerHTML = `
+            <ul>
+                <li>width : ${screen.width} - 화면너비 </li>
+                <li>height : ${screen.height} - 화면 높이</li>
+                <li>colorDepth : ${screen.colorDepth} - 색상 깊이</li>
+            </ul>`;
       };
     </script>
   </body>
