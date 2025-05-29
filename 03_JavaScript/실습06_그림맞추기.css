@@ -1,37 +1,34 @@
 body {
+  text-align: center;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  margin: 0;
 }
-section {
-  display: flex;
-}
-#sec1 {
-  margin: 30px;
-  gap: 20px;
-}
-
-body img {
+img {
   border-radius: 50%;
   width: 200px;
   height: 200px;
+  object-fit: cover;
+  margin: 10px;
 }
-
-.box1,
-.box2 {
-  width: 130px;
-  height: 50px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
+button {
+  border: none;
+  font-size: 1rem;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  background: tomato;
+  color: navy;
 }
-.box1 {
-  background-color: orange;
+button:last-child {
+  background: navy;
+  color: tomato;
 }
-.box2 {
-  background-color: navy;
+h2 {
+  font-style: italic;
+  visibility: hidden;
 }

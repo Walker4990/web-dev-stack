@@ -45,7 +45,7 @@
     <p>현재 페이지의 url 정보 확인 및 이동, 새로고침</p>
     <button onclick="showLocation()">현재 URL 정보</button>
     <button onclick="movePage()">다른 페이지로 이동</button>
-    <button onclick="reload()">새로고침</button>
+    <button onclick="location.reload()">새로고침</button>
     <div id="locationInfo"></div>
     <script>
       const showLocation = () => {
@@ -62,6 +62,18 @@
       };
       const movePage = () => {
         location.href = "https://www.naver.com";
+      };
+    </script>
+    <h2>navigator</h2>
+    <p>브라우저와 운영체제 정보를 제공</p>
+    <button onclick="showNavigator()">브라우저 정보</button>
+    <div id="naviInfo"></div>
+    <script>
+      const showNavigator = () => {
+        naviInfo.innerHTML = `
+                <ul>
+                    <li>userAgent : ${navigator.userAgent} -브라우저 정보</li>
+                </ul>`;
       };
     </script>
   </body>
