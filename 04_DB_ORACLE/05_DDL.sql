@@ -420,16 +420,45 @@ FROM
            JOIN BOOK C ON (A.BK_NO=C.BK_NO)
            JOIN PUBLISHER D ON (D.PUB_NO = C.PUB_NO);
 
+/*
+    ALTER  
+    - 객체를 수정하는 구문
 
+    ALTER TABLE 테이블명 수정할내용;
+*/
+/*
+    1. 컬럼 추가 / 수정 / 삭제 / 이름 변경
+    1-1. 컬럼 추가 (ADD)
+    ADD 컬럼명 데이터 타입 [DEFAULT 기본값];
+*/
+-- 새로운 컬럼이 만들어지고 기본적으로 기존 데이터는 NULL처리
+ALTER TABLE USER_INFO ADD CNAME VARCHAR2(20);
 
+-- 새로운 컬럼이 만들어지고 내가 지정한 기본값으로 채워짐
+ALTER TABLE USER_INFO ADD LNAME VARCHAR2(20) DEFAULT '한국';
 
+SELECT * FROM USER_INFO;
 
+/*
+    1-2. 컬럼 수정 (MODIFY)
+    - 데이터 타입 변경 : MODIFY 컬럼명 변경할 데이터타입;
+    - 기본값 변경 : MODIFY 컬럼명 DEFAULT 변경할 기본값;
+*/
+DESC USER_INFO;
+ALTER TABLE USER_INFO MODIFY ADDRESS VARCHAR2(100);
+-- 변경하려는 자료형의 크기보다 이미 큰 값이 존재해서 에러!
+ALTER TABLE USER_INFO MODIFY ADDRESS VARCHAR2(10);
 
+-- 변경하려는 자료형의 데이터가 존재할 시 바꾸려고 해서 에러
+ALTER TABLE USER_INFO MODIFY ADDRESS NUMBER;
 
+-- 값이 없으면 데이터타입 변경 가능
+ALTER TABLE USER_INFO MODIFY CNAME NUMBER;
 
-
-
-
+-- 다중 수정 
+ALTER TABLE USER_INFO 
+    MODIFY ADDRESS VARCHAR2(50)
+    MODIFY LNAME DEFAULT '아시아';
 
 
 
