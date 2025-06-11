@@ -149,3 +149,21 @@ ALTER TABLE PROJECT_TASKS ADD
     
 --  ** 과제 **
 -- 일정 관리!
+
+create table schedules(
+	schedule_id int primary key auto_increment,
+    title varchar(100) not null, -- 스케줄 이름
+    description text, -- 세부 내용
+    start_date date, -- 시작 일자
+    end_date date,  -- 마감 일자
+    schedule_type varchar(10) check (schedule_type in ('내근','외근','회의')), -- 근무 타입
+    pro_no int, -- 프로젝트 일정 연결
+    task_no int -- 개인 업무 일정 연결
+    
+);
+
+ALTER TABLE SCHEDULES ADD FOREIGN KEY (PRO_NO) REFERENCES PROJECT(PRO_NO);
+ALTER TABLE SCHEDULES ADD FOREIGN KEY (TASK_NO) REFERENCES PROJECT_TASKS(TASK_NO);
+
+
+
