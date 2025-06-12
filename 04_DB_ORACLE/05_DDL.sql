@@ -460,20 +460,106 @@ ALTER TABLE USER_INFO
     MODIFY ADDRESS VARCHAR2(50)
     MODIFY LNAME DEFAULT '아시아';
 
+INSERT INTO USER_INFO(USER_ID, NAME) VALUES(USER_INFO_SEQ.NEXTVAL, '테스트');
+
+/*
+    1-3 컬럼 삭제 (DROP)
+    DROP COLUMN 컬럼명;
+
+    - 데이터 값이 있어도 같이 삭제됨 (삭제된 컬럼 복구는 불가능)    
+*/
+ALTER TABLE USER_INFO DROP COLUMN LNAME;
 
 
+-- 부모키(PK) 참조되고 있는 컬럼이 있다면 삭제 불가능
+ALTER TABLE BOOK DROP COLUMN BK_NO;
+
+-- 참조되고 있는 컬럼이 삭제되어 있을 시 가능!
+ALTER TABLE PUBLISHER DROP COLUMN PUB_NO;
+
+/*
+    1-4. 컬럼명 변경
+    RENAME COLUMN 기존 컬럼명 TO 변경할 컬럼명
+*/
+ALTER TABLE USER_INFO RENAME COLUMN CONTACT TO PHONE;
+
+SELECT * FROM USER_INFO;
+
+/*
+    2. 제약조건
+    2-1. 제약조건 추가
+    ADD [CONSTRAINT 제약조건명] 
+    - PRIMARY KEY : PRIMARY KEY(컬럼명);
+    - FOREIGN KEY : FOREIGN KEY(컬럼명) REFERENCES 테이블명(컬럼명);
+    - UNIQUE : UNIQUE(컬럼명);
+    - CHECK : CHECK(컬럼에 대한 조건);
+    
+    NOT NULL : MODIFY 컬럼명 [CONSTRAINT 제약조건명] NOT NULL;
+*/
+
+CREATE TABLE DEPT_COPY
+AS SELECT * FROM DEPARTMENT;
+
+-- 제약 조건명 없이 추가
+ALTER TABLE DEPT_COPY
+ADD PRIMARY KEY(DEPT_ID);
+
+-- 제약조건명 있이 추가
+ALTER TABLE DEPT_COPY
+ADD CONSTRAINT DEPT_PK PRIMARY KEY(DEPT_ID);
+/*
+    2-2. 제약조건 삭제
+    DROP CONSTRAINT 제약조건명;
+*/
+ALTER TABLE DEPT_COPY DROP CONSTRAINT DEPT_PK;
+
+-- 제약조건 확인
+SELECT * FROM USER_CONSTRAINTS WHERE TABLE_NAME = 'DEPT_COPY';
 
 
+/*
+    2-3. 제약조건명 변경
+    RENAME CONSTRAINT 기존 제약조건명 TO 변경할 제약조건명;
 
+*/
 
+ALTER TABLE DEPT_COPY RENAME CONSTRAINT SYS_C008401 TO DEPT_ID_PK;
 
+/*
+    3. 테이블명 변경
+    ALTER TABALE 기존 테이블명 RENAME TO 변경할 테이블명;
+                RENAME 기존 테이블명 TO 변경할 테이블명;
+                                (둘 다 가능)
+*/
 
+ALTER TABLE DEPT_COPY RENAME TO DEPT_TEST;
 
+SELECT * FROM DEPT_TEST;
 
+/*
+    DROP
+    - 객체를 삭제하는 구문
+*/
+DROP TABLE DEPT_TEST;
 
+-- 참조되고 있는 부모테이블은 함부로 삭제되지 않는다.
+DROP TABLE BOOK;
 
+-- 만약 삭제하고자 한다면
+-- 방법 1. 부모 테이블 삭제 시 제약조건까지 같이삭제
+DROP TABLE BOOK CASCADE CONSTRAINT;
 
+-- 방법 2. 자식 테이블 먼저 삭제 후 부모 테이블 삭제
+DROP TABLE RENT;
+DROP TABLE MEMBER;
 
+/*
+    TRUNCATE 
+    - 테이블은 구조는 유지, 데이터만 삭제하는 구문
+*/
+TRUNCATE TABLE DEPT_COPY;
+
+SELECT * FROM DEPT_COPY;
 
 
 
