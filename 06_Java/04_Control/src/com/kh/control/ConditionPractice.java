@@ -9,10 +9,10 @@ public class ConditionPractice {
 	
 	public static void main(String[] args) {
 		ConditionPractice c = new ConditionPractice();
-		c.method1();
-		c.method2();
-		c.method3();
-		c.method4();
+//		c.method1();
+//		c.method2();
+//		c.method3();
+//		c.method4();
 		c.method5();
 		c.method6();
 		c.method7();
@@ -29,7 +29,12 @@ public class ConditionPractice {
        양수만 입력해주세요.
      */
     public void method1() {
+    	System.out.println("숫자를 입력해주세요 > ");
+    	int num = sc.nextInt();
     	
+    	if (num > 0 && num % 2 ==0) System.out.println("짝수");
+    	else if (num > 0 && num % 2 != 0) System.out.println("홀수");
+    	else if (num < 0) System.out.println("양수만 입력해주세요.");
     }
 
     /*
@@ -42,7 +47,14 @@ public class ConditionPractice {
 
      */
     public void method2() {
-      
+    	System.out.println("인원을 입력해주세요 > ");
+    	int people = sc.nextInt();
+    	System.out.println("피자 조각 수 : ");
+    	int slice = sc.nextInt();
+    	int whole = slice / people;
+    	
+    	if (slice % people == 0) System.out.println(whole);
+    	else System.out.println(whole +1);
     }
 
     /*
@@ -63,7 +75,15 @@ public class ConditionPractice {
         축하합니다, 합격입니다!
      */
     public void method3() {
-    	
+    	System.out.println("국어 점수 > ");
+    	int score1 = sc.nextInt();
+    	System.out.println("영어 점수 > ");
+    	int score2 = sc.nextInt();
+    	System.out.println("수학 점수 > ");
+    	int score3 = sc.nextInt();
+    	int avg = (score1 + score2 + score3)/3;
+    	if (score1 >= 40 && score2 >= 40 && score3 >= 40 && avg >= 60 ) System.out.println("축하합니다! 합격입니다!"); 
+    	else System.out.println("불합격입니다.");
     }
 
     /*
@@ -74,7 +94,12 @@ public class ConditionPractice {
         464000
      */
     public void method4() {
-
+    	System.out.println("총 구매한 가격 : ");
+    	int total = sc.nextInt();
+    	
+    	if(total >= 100000 && total <300000) System.out.println(total * 0.95);
+    	else if (total >= 300000 && total < 500000) System.out.println(total * 0.9);
+    	else if (total >= 500000) System.out.println(total * 0.8);
     }
 
 
@@ -83,7 +108,14 @@ public class ConditionPractice {
         입력받은 각에 따라 예각일 때 1, 직각일 때 2, 둔각일 때 3, 평각일 때 4를 출력하세요.
      */
     public void method5() {
+    	System.out.println("각을 입력하세요 : ");
+    	int angle = sc.nextInt();
     	
+    	if (0 > angle || angle > 180) return;
+    	else if (0 < angle && angle < 90) System.out.println(1);
+    	else if (angle == 90) System.out.println(2);
+    	else if (90 < angle && angle < 180) System.out.println(3);
+    	else if (angle == 180) System.out.println(4);
     }
 
 
