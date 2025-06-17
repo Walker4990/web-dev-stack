@@ -70,7 +70,7 @@ public class VariablePractice {
 		int num1 = sc.nextInt();
 		System.out.print("두번째 정수 : ");
 		int num2 = sc.nextInt();
-		System.out.println("더하기 : " + num1 + num2);
+		System.out.println("더하기 : " + (num1 + num2));
 		System.out.println("뺴기 : " + (num1 - num2));
 		System.out.println("곱하기 : " +num1 * num2);
 		System.out.println("나누기 : " +num1 / num2);
@@ -110,7 +110,7 @@ public class VariablePractice {
 		System.out.println(str.length());
 		char first = str.charAt(0);
 		char second = str.charAt(1);
-		char last = str.charAt(4);
+		char last = str.charAt(str.length()-1);
 		System.out.println(first);
 		System.out.println(second);
 		System.out.println(last);
@@ -125,14 +125,13 @@ public class VariablePractice {
 	 * B unicode : 66
 	 * */
 	public void method6() {
- 
-		int num ='A';
-		int num2 = 'B';
-		System.out.println(num);
-		System.out.println(num2);
+		System.out.println("문자를 입력하세요. (A/B) > ");
+		char ch = sc.next().charAt(0);
+		System.out.println(ch+ "의 유니코드 : " + (int) ch);
+		
 	}
 	
-	/*
+/*
 	 * 국어, 영어, 수학 세 과목의 점수를 입력 받아 총점과 평균을 출력하세요.
 	 * 
 	 * 국어 : 75
@@ -142,9 +141,10 @@ public class VariablePractice {
 	 * 평균 : 72.67
 	 * */
 	public void method7() {
-		double lang = 75;
-		double eng = 63;
-		double math = 80;
+		double lang = sc.nextDouble();
+		double eng = sc.nextDouble();
+		double math = sc.nextDouble();
+		
 		double total = lang + eng + math;
 		double avg = (lang + eng + math)/3;
 		
