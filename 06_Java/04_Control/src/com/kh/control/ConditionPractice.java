@@ -13,10 +13,10 @@ public class ConditionPractice {
 //		c.method2();
 //		c.method3();
 //		c.method4();
-		c.method5();
-		c.method6();
-		c.method7();
-		c.method8();
+//		c.method5();
+//		c.method6();
+//		c.method7();
+//		c.method8();
 		c.method9();
 		c.method10();
 	}
@@ -143,7 +143,14 @@ public class ConditionPractice {
        로그인 실패
     */
     public void method6() {
-
+    	System.out.println("ID를 입력하세요 > ");
+    	String id = sc.nextLine();
+    	System.out.println("비밀번호를 입력하세요 > ");
+    	int pw = sc.nextInt();
+    	
+    	if (id.equals("happy") && pw ==1234 ) System.out.println("로그인 성공!");
+    	else System.out.println("로그인 실패");
+    	
     }
 
     /*
@@ -160,7 +167,18 @@ public class ConditionPractice {
 
      */
     public void method7() {
-
+    	System.out.println("키를 입력하세요 : ");
+    	double height = sc.nextDouble();
+    	System.out.println("몸무게를 입력하세요 : ");
+    	double weight = sc.nextDouble();
+    	
+    	double BMI = weight / (height * height) * 10000;
+    	
+    	if(BMI < 18.5) System.out.println("저체중");
+    	else if (BMI < 23) System.out.println("정상 체중");
+    	else if (BMI < 25) System.out.println("과체중");
+    	else if (BMI < 30) System.out.println("비만");
+    	else if (BMI >= 30) System.out.println("고도 비만");
 
     }
 
@@ -176,7 +194,25 @@ public class ConditionPractice {
 
      */
     public void method8() {
-
+    	System.out.println("숫자1 입력 : ");
+    	int num1 = Integer.parseInt(sc.nextLine());
+    	System.out.println("숫자2 입력 : ");
+    	int num2 = Integer.parseInt(sc.nextLine());
+    	System.out.println("숫자연산자 입력 입력 : ");
+    	String oper = sc.nextLine();
+    	switch(oper) {
+    		case "+" : System.out.println(num1+num2);
+    		break;
+    		case "-" : System.out.println(num1-num2);
+    		break;
+    		case "*" : System.out.println(num1*num2);
+    		break;
+    		case "/" : System.out.println(num1/num2);
+    		break;
+    		case "%" : System.out.println(num1%num2);
+    		break;
+    		
+    	}
     }
 
     /*
@@ -191,19 +227,19 @@ public class ConditionPractice {
         조회 메뉴입니다.
      */
     public void method9() {
-    	
+    	System.out.println("메뉴 번호를 입력하세요 : ");
+    	int menu = Integer.parseInt(sc.nextLine());
+    	switch(menu) {
+    		case 1 : System.out.println("입력 메뉴입니다."); break;
+    		case 2 : System.out.println("수정 메뉴입니다."); break;
+    		case 3 : System.out.println("조회 메뉴입니다."); break;
+    		case 4 : System.out.println("삭제 메뉴입니다."); break;
+    		case 9 : System.out.println("프로그램이 종료됩니다."); break;
+    	}
     }
 
     /*
-        중간고사, 기말고사, 과제점수, 출석횟수를 입력하고 Pass 또는 Fail을 출력하세요.
-        총점 100점 중 배점으로는 다음과 같다.
-        중간고사 (20%), 기말고사 (30%), 과제 (30%), 출석 (20%)
-
-        이때, 출석 횟수는 총 강의 횟수 20회 중에서 출석한 날만 입력
-
-        총점이 70점 이상이면서 전체 강의의 70%이상 출석을 했을 경우 Pass,
-        아니면 Fail을 출력하세요.
-
+       
         중간 고사 점수 : 80
         기말 고사 점수 : 90
         과제 점수 : 50
@@ -238,9 +274,38 @@ public class ConditionPractice {
         FAIL [출석 횟수 부족] (10/20)
         FAIL [점수 미달] (총점 66.0)
 
+ 중간고사, 기말고사, 과제점수, 출석횟수를 입력하고 Pass 또는 Fail을 출력하세요.
+        총점 100점 중 배점으로는 다음과 같다.
+        중간고사 (20%), 기말고사 (30%), 과제 (30%), 출석 (20%)
+
+        이때, 출석 횟수는 총 강의 횟수 20회 중에서 출석한 날만 입력
+
+        총점이 70점 이상이면서 전체 강의의 70%이상 출석(14회)을 했을 경우 Pass,
+        아니면 Fail을 출력하세요.
+
+
      */
     public void method10() {
+    	System.out.println("중간고사 점수 입력 : ");
+    	int test1 = sc.nextInt();
+    	System.out.println("기말고사 점수 입력 : ");
+    	int test2 = sc.nextInt();
+    	System.out.println("과제점수 입력 : ");
+    	int hw = sc.nextInt();
+    	System.out.println("출석 횟수 입력 : ");
+    	int atd = sc.nextInt();
     	
+    	double atdScore = (atd / 20.0) * 100;
+    	double passScore = (test1*0.2) + (test2*0.3) + (hw*0.3) + (atdScore*0.2);
+    	
+    	if (passScore >= 70 && atd >=14) {
+    			System.out.println("PASS");
+    	} else if (passScore >= 70 && atd <14) { 
+    		System.out.println("Fail [출석 횟수 부족] ("+ atd +"/20)");
+    	}
+    	else if (passScore < 70 && atd >=14) {
+    		System.out.println("Fail [점수 미달] "+ "(총점 " + passScore + ")" );
+    	} else System.out.println("Fail [출석 횟수 부족] (" + atd + "/20) [점수 미달] (총점 " + passScore + ")");
     }
     
 }

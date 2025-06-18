@@ -8,13 +8,13 @@ public class VariablePractice {
 	
 	public static void main(String[] args) {
 		VariablePractice v = new VariablePractice();
-		v.method1();
-		v.method2();
-		v.method3();
-		v.method4();
-		v.method5();
+//		v.method1();
+//		v.method2();
+//		v.method3();
+//		v.method4();
+//		v.method5();
 		v.method6();
-		v.method7();
+//		v.method7();
 	}
 	
 	/*
@@ -27,7 +27,10 @@ public class VariablePractice {
 	public void method1() {
 		int adult = 10000;
 		int youth = 7000;
-		System.out.println(adult * 2 + youth * 3);
+		
+		int adultCnt = 2;
+		int youthCnt = 3;
+		System.out.println(adult * adultCnt + youth * youthCnt);
 	}
 	
 	/*
@@ -45,6 +48,11 @@ public class VariablePractice {
 		int z = 9;
 		
 		// 코드 적어주세요!
+		int temp = x;
+		x = y;
+		y = z;
+		z = temp;
+		
 		System.out.println("x = " + y);
 		System.out.println("y = " + z);
 		System.out.println("z = " + x);
@@ -65,15 +73,15 @@ public class VariablePractice {
 	 * */
 	public void method3() {
 		
-		
+		// 코드 정렬 : 내가 정렬하고자 하는 부분 선택 후 Ctrl + shift + f
 		System.out.print("첫번째 정수 : ");
 		int num1 = sc.nextInt();
 		System.out.print("두번째 정수 : ");
 		int num2 = sc.nextInt();
 		System.out.println("더하기 : " + (num1 + num2));
 		System.out.println("뺴기 : " + (num1 - num2));
-		System.out.println("곱하기 : " +num1 * num2);
-		System.out.println("나누기 : " +num1 / num2);
+		System.out.println("곱하기 : " + (num1 * num2));
+		System.out.println("나누기 : " + (num1 / num2));
 	}
 
 	/*
@@ -90,11 +98,14 @@ public class VariablePractice {
 	
 		
 		System.out.print("가로 길이 : ");
-		double width = sc.nextInt();
+		double width = Double.parseDouble(sc.nextLine());
 		System.out.print("세로 길이 : ");
-		double height = sc.nextInt();
-		System.out.println("면적 = " + width * height);
-		System.out.println("둘레 = " + (width + height) * 2);
+		double height = Double.parseDouble(sc.nextLine());
+		
+		double area = width * height;
+		double size = (width + height) * 2;
+		System.out.printf("면적 = %.2f\n", area);
+		System.out.println("둘레 = " + String.format("%.1f", size));
 	}
 
 	/*
@@ -106,15 +117,19 @@ public class VariablePractice {
 	 * 마지막 문자 : e
 	 * */
 	public void method5() {
-		String str = "apple";
-		System.out.println(str.length());
-		char first = str.charAt(0);
-		char second = str.charAt(1);
-		char last = str.charAt(str.length()-1);
-		System.out.println(first);
-		System.out.println(second);
-		System.out.println(last);
-		
+//		String str = "apple";
+//		System.out.println(str.length());
+//		char first = str.charAt(0);
+//		char second = str.charAt(1);
+//		char last = str.charAt(str.length()-1);
+//		System.out.println(first);
+//		System.out.println(second);
+//		System.out.println(last);
+		System.out.println("문자열을 입력하세요 : ");
+		String word = sc.nextLine();
+		System.out.println(word.charAt(0));
+		System.out.println(word.charAt(1));
+		System.out.println(word.charAt(word.length()-1));
 	}
 
 	/*
@@ -126,8 +141,10 @@ public class VariablePractice {
 	 * */
 	public void method6() {
 		System.out.println("문자를 입력하세요. (A/B) > ");
-		char ch = sc.next().charAt(0);
+		char ch = sc.nextLine().charAt(0);
 		System.out.println(ch+ "의 유니코드 : " + (int) ch);
+		
+		System.out.println((char)(ch+1)+ "의 유니코드 : " + (int) (ch+1));
 		
 	}
 	
@@ -150,6 +167,7 @@ public class VariablePractice {
 		
 		System.out.println(total);
 		System.out.printf("%.2f", avg);
+		// int 로 선언 후 avg만 double로 형변환 해도 문제 없음
 	}
 
 }

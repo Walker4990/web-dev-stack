@@ -38,10 +38,10 @@ public class OperatorPractice {
 	//입력 받은 숫자를 산술 연산자만 사용해서 십의 자리 이하는 버리는 코드를 작성하세요.
 	//만약 432이라면 400, 111이라면 100이 출력됩니다.
 	public void method2() {
-		System.out.println("첫번재 숫자 : ");
+		System.out.println("숫자 입력 : ");
 		int num1 = sc.nextInt();
-		
-		int number = num1/100*100;
+		// number 구하는 방법 중 num1 - num1 % 100으로 하는 방법도 있음
+		int number = num1 / 100 * 100;
 		System.out.println(number);
 	}
 
@@ -73,10 +73,10 @@ public class OperatorPractice {
 		System.out.println("주민등록번호를 입력하세요 : ");
 		String resiNum = sc.nextLine();
 		
-		 String result = resiNum.charAt(7) == '1' ? 
-				 "남자" : resiNum.charAt(7) == '2' ? 
-				 "여자" : resiNum.charAt(7) == '3' ? 
-				"남자" : resiNum.charAt(7) == '4' ?  "여자" : "사람아님.";
+		 String result = resiNum.charAt(7) == '1' || resiNum.charAt(7) == '3' ? 
+				 "남자" : resiNum.charAt(7) == '2' || resiNum.charAt(7) == '4' ? 
+				 "여자" : "사람아님.";
+				
 	System.out.println(result);			
 		
 	}
@@ -104,20 +104,21 @@ public class OperatorPractice {
 		 * 바구니 크기가 8 사과가 17 바구니 3개
 		 * */
 		int basketCount = (apple % basket == 0) ? (apple / basket) : (apple / basket + 1);
-
+//		System.out.println((apple / count) + (apple % count == 0 ? 0 : 1));
 	    System.out.println("필요한 바구니의 수 : " + basketCount);
 	}
 	
 	//초 단위 시간을 입력받아 1시간 1분 1초 형식으로 출력
 	public void method8() {
 		System.out.println("초 : ");
-		int sec = sc.nextInt();
+		int second = sc.nextInt();
 		
-		int sec1 = sec % 60;
-		int min = (sec%3600) / 60;
-		int hour = sec / 3600;
-		
-		System.out.println(hour+ "시간 " + min +"분 " + sec1 + "초");
+		int sec = second % 60;
+		int min = (second%3600) / 60;
+		int hour = second / 3600;
+//		second -= hour * 3600;
+//		second -= minute * 60;
+		System.out.println(hour+ "시간 " + min +"분 " + sec + "초");
 		
 		
 	}
