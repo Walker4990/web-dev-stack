@@ -12,7 +12,7 @@ class LoopPractice {
 		LoopPractice l = new LoopPractice();
 //		l.method1();
 //		l.method2();
-		l.method3();
+//		l.method3();
 		l.method4();
 		l.method5();
 		l.method6();
@@ -85,7 +85,14 @@ class LoopPractice {
         0
      */
     public void method4() {
+    
     	
+    	while(true) {
+    		int num = (int) (Math.random()* 11);
+    		System.out.println(num);
+    		if (num==0) return;
+    		
+    	}
     }
 
     /*
@@ -100,7 +107,34 @@ class LoopPractice {
 
      */
     public void method5() {
+    
     	
+    	int one = 0;
+    	int two = 0;
+    	int three = 0;
+    	int four = 0;
+    	int five = 0;
+    	int six = 0;
+    	
+    	for (int i =0; i < 10; i++) {
+    		int dice = (int) (Math.random()*6+1);
+    		
+    		if (dice == 1) one++;
+    		else if (dice == 2) two++;
+    		else if (dice == 3) three++;
+    		else if (dice == 4) four++;
+    		else if (dice == 5) five++;
+    		else if (dice == 6) six++;
+    		
+    		
+    	}
+    	System.out.println("1 :" + one);
+    	System.out.println("2 :" + two);
+    	System.out.println("3 :" + three);
+    	System.out.println("4 :" + four);
+    	System.out.println("5 :" + five);
+    	System.out.println("6 :" + six);
+    
     }
 
     /*
@@ -126,7 +160,14 @@ class LoopPractice {
 	    비긴 횟수 : 1, 진 횟수 : 1, 이긴 횟수 : 1
     */
     public void method6() {
-    
+    	int rock = 1;
+    	int scissors =2;
+    	int paper = 3;
+    	
+    	System.out.println("가위바위보 : ");
+    	int rcp = sc.nextInt();
+    	
+    	
     }
 
 }
