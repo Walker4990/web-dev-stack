@@ -11,13 +11,13 @@ public class ConditionPractice {
 		ConditionPractice c = new ConditionPractice();
 //		c.method1();
 //		c.method2();
-//		c.method3();
+//		c.method3();	
 //		c.method4();
 //		c.method5();
 //		c.method6();
 //		c.method7();
 //		c.method8();
-		c.method9();
+//		c.method9();
 		c.method10();
 	}
 
@@ -31,15 +31,30 @@ public class ConditionPractice {
     public void method1() {
     	System.out.println("숫자를 입력해주세요 > ");
     	int num = sc.nextInt();
-    	
+    	/*내가 한거
     	if (num > 0 && num % 2 ==0) System.out.println("짝수");
     	else if (num > 0 && num % 2 != 0) System.out.println("홀수");
-    	else if (num < 0) System.out.println("양수만 입력해주세요.");
+    	else System.out.println("양수만 입력해주세요.");
+    	*/
+    	
+    	/* 중첩if 사용
+    	if (num > 0) {
+    		if (num % 2 ==0) System.out.println("짝수");
+    		else if (num % 2 != 0) System.out.println("홀수");
+    	}else System.out.println("양수만 입력해주세요."); 
+    	*/
+    	
+    	// 내가 한거랑 조금 다른 시선
+    	if (num <= 0) {
+    		System.out.println("양수만 입력해주세요.");
+    	} else if (num % 2 == 0) System.out.println("짝수다");
+    	else System.out.println("홀수다.");
     }
 
     /*
         A 피자가게는 피자를 두 조각에서 열 조각까지 원하는 조각 수로 잘라준다.
-        피자 조각 수와 피자를 먹는 사람의 수를 입력받아 한 사람 당 최소 한 조각 이상 피자를 먹으려면 최소 몇 판의 피자를 시켜야 하는지 출력하세요.
+        피자 조각 수와 피자를 먹는 사람의 수를 입력받아 한 사람 당 최소 한 조각 이상 피자를 먹으려면 
+        최소 몇 판의 피자를 시켜야 하는지 출력하세요.
 
         피자 조각 수 : 7
         피자 먹는 사람 수 : 10
@@ -52,15 +67,21 @@ public class ConditionPractice {
     	System.out.println("피자 조각 수 : ");
     	int slice = sc.nextInt();
     	int whole = slice / people;
-    	
+    	/*
     	if (slice % people == 0) System.out.println(whole);
     	else System.out.println(whole +1);
+    	*/
+    	if(slice % people != 0) {
+    		whole++;
+    	}
     }
 
     /*
-        국어, 영어, 수학 세 과목의 점수를 입력 받고 합계와 평균을 계산하고 합계와 평균을 이용하여 합격 / 불합격 처리하는 기능을 구현하세요.
+        국어, 영어, 수학 세 과목의 점수를 입력 받고 합계와 평균을 계산하고 합계와 평균을 이용하여 
+        합격 / 불합격 처리하는 기능을 구현하세요.
         (합격 조건 : 세 과목의 점수가 각각 40점 이상이면서 평균이 60점 이상일 경우)
-        합격 했을 경우 과목 별 점수와 합계, 평균, “축하합니다, 합격입니다!”를 출력하고 불합격인 경우에는 “불합격입니다.”를 출력하세요.
+        합격 했을 경우 과목 별 점수와 합계, 평균, “축하합니다, 합격입니다!”를 출력하고 
+        불합격인 경우에는 “불합격입니다.”를 출력하세요.
     
         국어점수 : 88 
         수학점수 : 50 
@@ -81,8 +102,13 @@ public class ConditionPractice {
     	int score2 = sc.nextInt();
     	System.out.println("수학 점수 > ");
     	int score3 = sc.nextInt();
-    	int avg = (score1 + score2 + score3)/3;
-    	if (score1 >= 40 && score2 >= 40 && score3 >= 40 && avg >= 60 ) System.out.println("축하합니다! 합격입니다!"); 
+    	int sum = score1 + score2 + score3;
+    	double avg = (double) (sum/3);
+    	if (score1 >= 40 && score2 >= 40 && score3 >= 40 && avg >= 60 ) {
+    		System.out.println("합계 점수 : "+ sum); 
+    		System.out.println("평균점수 : " + String.format("%.1f", avg));
+    		System.out.println("축하합니다! 합격입니다!");
+    	}
     	else System.out.println("불합격입니다.");
     }
 
@@ -96,12 +122,19 @@ public class ConditionPractice {
     public void method4() {
     	System.out.println("총 구매한 가격 : ");
     	int total = sc.nextInt();
-    	
+    	/*
     	if(total >= 100000 && total <300000) System.out.println(total * 0.95);
     	else if (total >= 300000 && total < 500000) System.out.println(total * 0.9);
     	else if (total >= 500000) System.out.println(total * 0.8);
+    	*/
+    	if(total >= 500000) total *= 0.8;
+    	else if (total >= 300000) total *= 0.9;
+    	else if (total >= 100000) total *= 0.95;
+    	
+    	DecimalFormat df = new DecimalFormat("###,###");
+    	System.out.println(df.format(total));
     }
-
+    	
 
     /*
         각에서 0도 초과 90도 미만은 예각, 90도는 직각, 90도 초과 180도 미만은 둔각 180도는 평각으로 분류한다.
@@ -110,12 +143,14 @@ public class ConditionPractice {
     public void method5() {
     	System.out.println("각을 입력하세요 : ");
     	int angle = sc.nextInt();
+    	int result = 0;
     	
-    	if (0 > angle || angle > 180) return;
-    	else if (0 < angle && angle < 90) System.out.println(1);
-    	else if (angle == 90) System.out.println(2);
-    	else if (90 < angle && angle < 180) System.out.println(3);
-    	else if (angle == 180) System.out.println(4);
+    	if (0 < angle && angle < 90) result = 1;
+    	else if (angle == 90) result = 2;
+    	else if (90 < angle && angle < 180) result = 3;
+    	else if (angle == 180) result = 4;
+    	else  System.out.println("잘못 입력함.");
+    	System.out.println(result);
     }
 
 
@@ -148,7 +183,10 @@ public class ConditionPractice {
     	System.out.println("비밀번호를 입력하세요 > ");
     	int pw = sc.nextInt();
     	
+    	//이런 푸는 문제가 아닌 진짜 로그인의 경우 비밀번호도 equals()로 하는게 좋음.
     	if (id.equals("happy") && pw ==1234 ) System.out.println("로그인 성공!");
+    	else if (!id.equals("happy") && pw ==1234 ) System.out.println("아이디가 틀렸습니다.");
+    	else if (id.equals("happy") && pw !=1234 ) System.out.println("비밀번호가 틀렸습니다.");
     	else System.out.println("로그인 실패");
     	
     }
@@ -199,19 +237,24 @@ public class ConditionPractice {
     	System.out.println("숫자2 입력 : ");
     	int num2 = Integer.parseInt(sc.nextLine());
     	System.out.println("숫자연산자 입력 입력 : ");
-    	String oper = sc.nextLine();
+    	char oper = sc.nextLine().charAt(0);
+    	int result = 0;
+    	
+    	if (num1>0 && num2>0) {
     	switch(oper) {
-    		case "+" : System.out.println(num1+num2);
+    		case '+' : result = num1 + num2;
     		break;
-    		case "-" : System.out.println(num1-num2);
+    		case '-' : result = num1 - num2;
     		break;
-    		case "*" : System.out.println(num1*num2);
+    		case '*' : result = num1 * num2;
     		break;
-    		case "/" : System.out.println(num1/num2);
+    		case '/' : result = num1 / num2;
     		break;
-    		case "%" : System.out.println(num1%num2);
+    		case '%' : result = num1 % num2;
     		break;
-    		
+    		default : System.out.println("잘못 입력하셨습니다. 프로그램을 종료합니다.");
+    	} 
+    	System.out.printf("%d %s %d = %d", num1, num2, oper, result);
     	}
     }
 
@@ -227,14 +270,22 @@ public class ConditionPractice {
         조회 메뉴입니다.
      */
     public void method9() {
+    	System.out.println("1. 입력");
+    	System.out.println("2. 수정");
+    	System.out.println("3. 조회");
+    	System.out.println("4. 삭제");
+    	System.out.println("9. 종료");
     	System.out.println("메뉴 번호를 입력하세요 : ");
     	int menu = Integer.parseInt(sc.nextLine());
+    	// String result = "" -> 문자열 초기화
     	switch(menu) {
     		case 1 : System.out.println("입력 메뉴입니다."); break;
     		case 2 : System.out.println("수정 메뉴입니다."); break;
     		case 3 : System.out.println("조회 메뉴입니다."); break;
     		case 4 : System.out.println("삭제 메뉴입니다."); break;
     		case 9 : System.out.println("프로그램이 종료됩니다."); break;
+    		default : System.out.println("잘못 입력하셨습니다.");
+    	
     	}
     }
 
@@ -299,13 +350,40 @@ public class ConditionPractice {
     	double passScore = (test1*0.2) + (test2*0.3) + (hw*0.3) + (atdScore*0.2);
     	
     	if (passScore >= 70 && atd >=14) {
+	    		System.out.println("중간고사 점수 : " + test1);
+				System.out.println("기말고사 점수 : " + test2);
+				System.out.println("과제점수 : " + hw);
+				System.out.println("출석 횟수 : " + "(" + atd +"/20)");
+    			System.out.println("==========결과==========");
+    			System.out.println("중간고사 점수(20) : " + (test1*0.2));
+    			System.out.println("기말고사 점수(30) : " + (test2*0.3));
+    			System.out.println("과제점수(30) : " + (hw*0.3));
+    			System.out.println("출석 횟수(20) : " + "(" + atd +"/20)");
+    			System.out.println("총점 : " + passScore);
     			System.out.println("PASS");
     	} else if (passScore >= 70 && atd <14) { 
+    		System.out.println("중간고사 점수 : " + test1);
+			System.out.println("기말고사 점수 : " + test2);
+			System.out.println("과제점수 : " + hw);
+			System.out.println("출석 횟수 : " + "(" + atd +"/20)");
+			System.out.println("==========결과==========");
     		System.out.println("Fail [출석 횟수 부족] ("+ atd +"/20)");
     	}
     	else if (passScore < 70 && atd >=14) {
-    		System.out.println("Fail [점수 미달] "+ "(총점 " + passScore + ")" );
-    	} else System.out.println("Fail [출석 횟수 부족] (" + atd + "/20) [점수 미달] (총점 " + passScore + ")");
+    		System.out.println("중간고사 점수 : " + test1);
+			System.out.println("기말고사 점수 : " + test2);
+			System.out.println("과제점수 : " + hw);
+			System.out.println("출석 횟수 : " + "(" + atd +"/20)");
+			System.out.println("==========결과==========");
+    		System.out.println("Fail [점수 미달] " + "(총점 " + passScore + ")" );
+    	} else {
+    		System.out.println("중간고사 점수 : " + test1);
+			System.out.println("기말고사 점수 : " + test2);
+			System.out.println("과제점수 : " + hw);
+			System.out.println("출석 횟수 : " + "(" + atd +"/20)");
+			System.out.println("==========결과==========");
+    		System.out.println("Fail [출석 횟수 부족] (" + atd + "/20) [점수 미달] (총점 " + passScore + ")");
+    	}
     }
     
 }

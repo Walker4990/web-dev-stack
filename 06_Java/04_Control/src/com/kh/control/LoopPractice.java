@@ -165,7 +165,7 @@ class LoopPractice {
     	int paper = 3;
     	
     	System.out.println("가위바위보 : ");
-    	int rcp = sc.nextInt();
+    	int rsp = sc.nextInt();
     	
     	
     }
