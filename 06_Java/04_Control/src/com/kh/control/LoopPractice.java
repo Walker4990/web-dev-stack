@@ -13,8 +13,8 @@ class LoopPractice {
 //		l.method1();
 //		l.method2();
 //		l.method3();
-		l.method4();
-		l.method5();
+//		l.method4();
+//		l.method5();
 		l.method6();
 		
 	}
@@ -164,10 +164,71 @@ class LoopPractice {
     	int scissors =2;
     	int paper = 3;
     	
-    	System.out.println("가위바위보 : ");
-    	int rsp = sc.nextInt();
+    	int win = 0;
+    	int draw = 0;
+    	int lose = 0;
+    	System.out.println("이름을 입력해주세요. : ");
+    	String name = sc.nextLine();
     	
     	
+    	
+    	
+    	while(true) {
+    		System.out.println("가위바위보 : ");
+        	int rsp = sc.nextInt();
+        	int comp = (int) (Math.random() * 3 +1);
+    		switch(rsp) {
+    		case 1: 
+    			switch(comp) {
+    			case 1 : 
+    				draw++;
+    				break;
+    			case 2: 
+    				win++;
+    				break;
+    			case 3:
+    				lose++;
+    				break;
+    			}
+    			break;
+    		case 2: 
+    			switch(comp) {
+    			case 1 : 
+    				lose++;
+    				break;
+    			case 2: 
+    				draw++;
+    				break;
+    			case 3:
+    				win++;
+    				break;
+    			}
+    			break;
+    		case 3: 
+    			switch(comp) {
+    			case 1 : 
+    				win++;
+    				break;
+    			case 2: 
+    				lose++;
+    				break;
+    			case 3:
+    				draw++;
+    				break;
+    			}
+    			break;
+    		}
+    		
+    	System.out.println(name + "님 : " + rsp);
+    	System.out.println("computer님 :" + comp);
+    	System.out.println("이긴 횟수 : " + win);
+    	System.out.println("비긴 횟수 : " + draw);
+    	System.out.println("진 횟수 : " + lose);
+    	if(win > 0 ) break;
+    	}
+    	
+    	
+    		
     }
 
 }
