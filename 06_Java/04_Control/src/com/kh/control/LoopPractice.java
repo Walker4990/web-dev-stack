@@ -164,12 +164,135 @@ class LoopPractice {
     	int scissors =2;
     	int paper = 3;
     	
+    	int win = 0;
+    	int draw = 0;
+    	int lose = 0;
+    	System.out.println("이름을 입력해주세요. : ");
+    	String name = sc.nextLine();
     	System.out.println("가위바위보 : ");
     	int rsp = sc.nextInt();
     	
+    	int comp = (int) (Math.random() * 3 +1);
     	
+    	for (int i = 0; i < comp; i++)
+    		switch(rsp) {
+    		case 1: 
+    			if (comp == 1) draw++;
+    			else if (comp == 2) lose++;
+    			else {
+    				win++; 
+    				break;
+    	
+    			}
+    		case 2: 
+    			if (comp == 1) lose++;
+    			else if (comp == 2) draw++;
+    			else win++; break;
+    		case 3: 
+    			if (comp == 1) win++;
+    			else if (comp == 2) lose++;
+    			else draw++; break;
+    		
+    			
+    		}
     }
 
 }
+import java.util.Scanner;
+
+//public class RSPGame {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//
+//        int rock = 1;
+//        int scissors = 2;
+//        int paper = 3;
+//
+//        int win = 0;
+//        int draw = 0;
+//        int lose = 0;
+//
+//        System.out.print("이름을 입력해주세요: ");
+//        String name = sc.nextLine();
+//
+//        while (true) {
+//            System.out.print("가위(2), 바위(1), 보(3) 중 선택하세요: ");
+//            int rsp = sc.nextInt();
+//
+//            int comp = (int) (Math.random() * 3 + 1);
+//
+//            System.out.println("컴퓨터 선택: " + comp);
+//
+//            switch (rsp) {
+//                case 1: // 바위
+//                    switch (comp) {
+//                        case 1: // 바위
+//                            draw++;
+//                            System.out.println("비겼습니다!");
+//                            break;
+//                        case 2: // 가위
+//                            win++;
+//                            System.out.println("이겼습니다!");
+//                            break;
+//                        case 3: // 보
+//                            lose++;
+//                            System.out.println("졌습니다!");
+//                            break;
+//                    }
+//                    break;
+//
+//                case 2: // 가위
+//                    switch (comp) {
+//                        case 1: // 바위
+//                            lose++;
+//                            System.out.println("졌습니다!");
+//                            break;
+//                        case 2: // 가위
+//                            draw++;
+//                            System.out.println("비겼습니다!");
+//                            break;
+//                        case 3: // 보
+//                            win++;
+//                            System.out.println("이겼습니다!");
+//                            break;
+//                    }
+//                    break;
+//
+//                case 3: // 보
+//                    switch (comp) {
+//                        case 1: // 바위
+//                            win++;
+//                            System.out.println("이겼습니다!");
+//                            break;
+//                        case 2: // 가위
+//                            lose++;
+//                            System.out.println("졌습니다!");
+//                            break;
+//                        case 3: // 보
+//                            draw++;
+//                            System.out.println("비겼습니다!");
+//                            break;
+//                    }
+//                    break;
+//
+//                default:
+//                    System.out.println("잘못된 입력입니다. 1~3 중 선택하세요.");
+//                    continue; // 잘못된 입력이면 이번 판 무효, 다시 입력받음
+//            }
+//
+//            if (win > 0) {
+//                break; // 사용자가 이기면 반복 종료
+//            }
+//
+//            System.out.println(); // 줄바꿈
+//        }
+//
+//        System.out.println();
+//        System.out.println(name + "님의 게임 결과");
+//        System.out.println("이긴 횟수: " + win);
+//        System.out.println("비긴 횟수: " + draw);
+//        System.out.println("진 횟수: " + lose);
+//    }
+//}
 
 
