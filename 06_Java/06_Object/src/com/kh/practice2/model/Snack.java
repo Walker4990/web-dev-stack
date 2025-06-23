@@ -46,9 +46,16 @@ public class Snack {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+//	@Override
+//	public String toString() {
+////		return kind + "(" + name + " - " + flavor + ") " + numOf + "개 " + price + "원";
+//	
 	@Override
 	public String toString() {
-		return kind + "(" + name + " - " + flavor + ") " + numOf + "개 " + price + "원";
+		return kind +"("+ name + "-" +
+				flavor + ")" + numOf + "개 " + price+"원";
 	}
 	
-}
+	}
+	
+
