@@ -15,7 +15,9 @@ public class Application2 {
 		while(true) {
 		System.out.println("최대 등록 가능한 회원 수는 "+ members.length + "명입니다.");
 		System.out.println("현재 등록된 회원 수는 " + count + "명입니다.");
+		if(count < members.length) {
 		System.out.println("1. 새 회원 등록");
+		}
 		System.out.println("2. 회원 정보 수정");
 		System.out.println("3. 전체 회원 정보 출력");
 		System.out.println("9. 끝내기");
@@ -25,10 +27,16 @@ public class Application2 {
 
 		switch(num) {
 		case 1:
+			if(count>=members.length) {
+				System.out.println("새 회원 등록이 불가합니다.");
+				break;
+			}
+			
 			Member m = new Member();
 			while(true) {
 			System.out.println("아이디 입력해주세요. : ");
 			String inputId = m.setId(sc.nextLine());
+			 boolean sameId = false;//  false - 중복 x
 			/*
 			 * 1. 새 회원 등록
 		 * 		 -> 아이디를 입력 받았는데 기존 멤버 배열에 아이디가 있는 경우
@@ -42,14 +50,23 @@ public class Application2 {
 		 *          성별(M/F) : 
 		 *          나이 : 
 			 * */
-			for(int i = 0; i< count; i++) {
-				if(members[i].getId().equals(inputId) && members[i] != null) {
-					System.out.println("중복된 아이디 입니다. 다시 입력해주세요.");
-				} else {
-					m.setId(inputId);
-					break;
-				}
-				
+			    for (int i = 0; i < count; i++) {
+			        if (members[i] != null && members[i].getId().equals(inputId)) {
+			            System.out.println("이미 같은 아이디가 있습니다. 다시 입력해주세요.");
+			            sameId = true; // 같은 아이디 찾았다! true로 바꿈
+			            break; // 찾았으니 더 볼 필요 없음
+			        }
+			    }
+
+			    if (sameId) { // sameId =true
+			        continue; // 다시 아이디 입력부터 시작
+			    }
+
+			   
+			    m.setId(inputId);
+			    break;
+			}
+			
 			System.out.println("이름을 입력해주세요. : ");
 			m.setName(sc.nextLine());
 			System.out.println("비밀번호를 입력해주세요. : ");
@@ -63,28 +80,44 @@ public class Application2 {
 			members[count++] = m;
 			
 				
-			}break;
-			}
-			
+			/*
+			2. 회원 정보 수정
+			 * 		-> 아이디를 입력 받았는데 기존 멤버 배열에 아이디가 없는 경우
+			 * 			"회원 정보가 없습니다." 출력 후 다시 메인 화면으로
+			 * 			
+			 * 		   수정할 회원의 아이디 : 
+			 * 		   수정할 이름 : 
+			 *         수정할 이메일 : 
+			 *         수정할 비밀번호 :
+			*/
 		case 2:
 			System.out.println("수정할 회원의 아이디 : ");
 			String id = sc.nextLine();
-			System.out.println("수정할 회원의 이름 : ");
-			String name = sc.nextLine();
-			System.out.println("수정할 회원의 이메일 : ");
-			String email = sc.nextLine();
-			System.out.println("수정할 회원의 비밀번호 : ");
-			String pwd = sc.nextLine();
-			
-			for(int i=0; i < members.length; i++) {
-				if(members[i]!=null && members[i].getId().equals(id))
-					members[i].setName(name);
-					members[i].setEmail(email);
-					members[i].setPwd(pwd);
+			boolean find = false;
+			for(int i =0; i < members.length; i++) {
+			if(members[i]!= null && members[i].getId().equals(id)) {
+				System.out.println("수정할 회원의 이름 : ");
+				String name = sc.nextLine();
+				System.out.println("수정할 회원의 이메일 : ");
+				String email = sc.nextLine();
+				System.out.println("수정할 회원의 비밀번호 : ");
+				String pwd = sc.nextLine();
 			}
 			
+			}if (find = true) {
+				System.out.println("아이디가 없습니다.");
+			} break;
 		
-			break;
+			
+//			for(int i=0; i < members.length; i++) {
+//				if(members[i]!=null && members[i].getId().equals(id))
+//					members[i].setName(name);
+//					members[i].setEmail(email);
+//					members[i].setPwd(pwd);
+//			}
+//			
+		
+			
 		case 3:
 			for(Member member : members) {
 				if(member!=null) {
@@ -94,8 +127,10 @@ public class Application2 {
 			break;
 		case 9:
 			System.out.println("끝내기");
-			break;
+			return;
 			
+		default : System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
+		 break;
 		}
 		}
 		/*
@@ -122,5 +157,7 @@ public class Application2 {
 		 * 메뉴 번호 : 
 		 * */
 	}
-
 }
+
+
+
