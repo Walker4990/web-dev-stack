@@ -1,19 +1,47 @@
 package com.kh.array.practice2.controller;
 
-import java.util.Scanner;
-
 import com.kh.array.practice2.model.Member;
 
 public class MemberController {
 
+	private Member[] members = new Member[3];
+	public int count = 0;
 	
+	// members - getter
+	public Member[] getMembers() {
+		return members;
+	}
+	
+	// 추가 로직
+	public void addInfo(Member m) {
+		members[count++] = m;
+	}
+	// 메서드 분리! 
+	// 아이디 체크! <- 등록 할 때도 필요! 수정할 때도 필요! 여기저기 필요한 경우!
+	public int idCheck(String id) {
+
+		
+		for(int i = 0; i < members.length; i++) {
+			if(members[i]!=null && members[i].getId().equals(id)) {
+				// 기존 배열에서 아이디가 있는 경우
+				return i;
+			}
+		}
+		
+		// 아이디가 없는경우 (인덱스는 0부터 시작하고 인트로 값이 나와야해서 항상 거짓은 -1 입력)
+		return -1;
+	}
+	
+	public void updateInfo(String id, String name, String email, String pwd) {
+		int index = idCheck(id);
+		members[index].setName(name);
+		members[index].setEmail(email);
+		members[index].setPwd(pwd);
 	}
 	
 	
 	
 	
-	// 아이디 체크 -> 배열을 전부 확인하고 아이디가 있는지 없는지 여부
-public void idCheck() {
-		for(int i=0; i< )
-	}
+	
+	
 }

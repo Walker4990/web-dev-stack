@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import com.kh.array.practice2.model.Member;
 
-public class Application2 {
+public class Application3 {
 
 	public static void main(String[] args) {
 		
@@ -143,7 +143,7 @@ public class Application2 {
 			for(Member member : members) {
 				if(member!=null) {
 				System.out.println(member);
-			}
+				}
 			}
 			break;
 		case 9:
@@ -179,6 +179,7 @@ public class Application2 {
 		 * 메뉴 번호 : 
 		 * */
 	}
+	
 }
 
 
