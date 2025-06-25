@@ -3,17 +3,19 @@ package com.kh.practice;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+import com.kh.practice.controller.Controller;
 import com.kh.practice.model.Department;
 import com.kh.practice.model.UserInfo;
 
 public class Application {
 
 	Scanner sc = new Scanner(System.in);
-	UserInfo info = new UserInfo();
+	UserInfo user = new UserInfo();
 	Department department = new Department();
-	
-	public static void main(String[] args) {
+	Controller cont = new Controller();
 
+	public static void main(String[] args) {
+		
 		Application app = new Application();
 		boolean check = true;
 		while (check) {
@@ -52,109 +54,129 @@ public class Application {
 	// 저장할 데이터를 사용자에게 받는 메서드
 	public void insertEmp() {
 		System.out.print("직원 번호 : ");
-		int userNo = info.setUserNo(Integer.parseInt(sc.nextLine()));
+		int userNo = Integer.parseInt(sc.nextLine());
+
 		System.out.print("직원 아이디 : ");
-		String id = info.setUserId(sc.nextLine());
+		String id = sc.nextLine();
+
 		System.out.print("직원 비밀번호 : ");
-		String password = info.setPassword(sc.nextLine());
+		String password = sc.nextLine();
+
 		System.out.print("직원 이메일 : ");
-		String email = info.setEmail(sc.nextLine());
+		String email = sc.nextLine();
+
 		System.out.print("직원 이름 : ");
-		String name = info.setName(sc.nextLine());
+		String name = sc.nextLine();
+
+		cont.inputInfo(userNo, id, password, email, name);
 
 		System.out.print("추가 정보를 더 입력하시겠습니까?(y/n) : ");
 		// y일 경우만
 		char add = sc.nextLine().charAt(0);
 		if (add == 'y') {
 			System.out.print("직원 전화번호 : ");
-			String phone = info.setPhone(sc.nextLine());
+			String phone = sc.nextLine();
+
 			System.out.print("직원 주소 : ");
-			String addr = info.setAddr(sc.nextLine());
+			String addr = sc.nextLine();
+
 			System.out.print("직원 성별 : ");
-			String gender = info.setGender(sc.nextLine());
+			String gender = sc.nextLine();
+
 			System.out.print("직원 생일 (예 : 2025-06-23) : "); // LocalDate.parse(문자열) <- 문자열을 날짜로
-			LocalDate birthDate = info.setBirthDate(LocalDate.parse(sc.nextLine()));
-			
-			
+			LocalDate birthDate = LocalDate.parse(sc.nextLine());
+
 			System.out.print("부서 번호 입력 : ");
-			
 			int deptNo = Integer.parseInt(sc.nextLine());
 			department.setDeptNo(deptNo);
-			info.setDepartment(department);
-			
+
 			System.out.print("부서명 입력 : ");// 너무 어렵다면 생략!
 			String deptName = sc.nextLine();
 			department.setDeptName(deptName);
-			info.setDepartment(department);
+
+			cont.inputInfo(phone, addr, gender, birthDate, department);
 		}
-			
+
 	}
 
 	// 수정할 데이터를 사용자에게 받는 메서드
 	public void updateEmp() {
-		
-
 		System.out.println("수정하려면 로그인이 필요합니다.");
 		System.out.print("아이디 입력 : ");
 		String id = sc.nextLine();
+
 		System.out.print("비밀번호 입력 : ");
 		String password = sc.nextLine();
 		// 아이디랑 비밀번호가 틀리다면!
-		if (!id.equals(info.getUserId()) || !password.equals(info.getPassword())) {
-			System.out.println("로그인 실패! 정보 수정할 수 없습니다");
-		} else {// 아이디와 비밀번호 성공했을시에만!
-			while (true) {
-				System.out.println("직원의 어떤 정보를 수정하시겠습니까?");
-				System.out.println("1. 전화 번호");
-				System.out.println("2. 생일");
-				System.out.println("3. 부서");
-				System.out.println("9. 돌아가기");
-				System.out.print("메뉴 번호를 누르세요 : ");
-				int select = Integer.parseInt(sc.nextLine());
 
-				switch (select) {
-				case 1:
-					System.out.print("전화 번호 수정 : ");
-					String phone = info.setPhone(sc.nextLine());
-					System.out.println("수정이 완료 되었습니다.");
-					break;
-				case 2:
-					System.out.print("생일 수정 (예 : 2025-06-23) : ");
-					LocalDate birthDate = info.setBirthDate(LocalDate.parse(sc.nextLine()));
-					System.out.println("수정이 완료 되었습니다.");
-					break;
-				case 3:
-					System.out.print("부서 번호 수정 : ");
-					int deptNo = Integer.parseInt(sc.nextLine());
-					department.setDeptNo(deptNo);
-					info.setDepartment(department);
-					
-					System.out.print("부서명 수정 : ");
-					String deptName = sc.nextLine();
-					department.setDeptName(deptName);
-					info.setDepartment(department);
-					System.out.println("수정이 완료 되었습니다.");
-					break;
-				case 9:
-					break;
-				}
+		user = cont.login(id, password);
+		
+		if (user == null) {
+			System.out.println("로그인 실패! 정보 수정할 수 없습니다");
+			return;
+		}
+		// 로그인! 클라이언트단에도 유저정보 임시저장
+//		user = cont.getUser();
+		
+
+		// 아이디와 비밀번호 성공했을시에만!
+		while (true) {
+			System.out.println("직원의 어떤 정보를 수정하시겠습니까?");
+			System.out.println("1. 전화 번호");
+			System.out.println("2. 생일");
+			System.out.println("3. 부서");
+			System.out.println("9. 돌아가기");
+			System.out.print("메뉴 번호를 누르세요 : ");
+			int select = Integer.parseInt(sc.nextLine());
+
+			switch (select) {
+			case 1:
+				System.out.print("전화 번호 수정 : ");
+				String phone = sc.nextLine();
+				System.out.println("수정이 완료 되었습니다.");
+//				cont.updateInfo(phone);
+				user.setPhone(phone);
+				break;
+			case 2:
+				System.out.print("생일 수정 (예 : 2025-06-23) : ");
+				LocalDate birthDate = LocalDate.parse(sc.nextLine());
+				System.out.println("수정이 완료 되었습니다.");
+//				cont.updateInfo(birthDate);
+				user.setBirthDate(birthDate);
+				break;
+			case 3:
+				System.out.print("부서 번호 수정 : ");
+				int deptNo = Integer.parseInt(sc.nextLine());
+				department.setDeptNo(deptNo);
+
+				System.out.print("부서명 수정 : ");
+				String deptName = sc.nextLine();
+				department.setDeptName(deptName);
+//				cont.updateInfo(deptNo, deptName);
+				user.setDepartment(department);
+				System.out.println("수정이 완료 되었습니다.");
+				break;
+			case 9:
+				break;
 			}
+			
+			cont.updateUser(user);
 		}
 	}
 
 	// 데이터를 출력하는 메서드
 	public void printEmp() {
-		System.out.println("직원 번호 : " + info.getUserNo());
-		System.out.println("직원 아이디: " + info.getUserId());
-		System.out.println("직원 비밀번호: " + info.getPassword());
-		System.out.println("직원 이메일: " + info.getEmail());
-		System.out.println("직원 이름: "+ info.getName());
-		System.out.println("직원 전화번호: "+ info.getPhone());
-		System.out.println("직원 주소: "+ info.getAddr());
-		System.out.println("직원 성별: "+ info.getGender());
-		System.out.println("직원 생일: "+ info.getBirthDate());
-		System.out.println("부서 번호: "+ department.getDeptNo());
-		System.out.println("부서명: "+ department.getDeptName());
-		
+		System.out.println("직원 번호 : " + user.getUserNo());
+		System.out.println("직원 아이디: " + user.getUserId());
+		System.out.println("직원 비밀번호: " + user.getPassword());
+		System.out.println("직원 이메일: " + user.getEmail());
+		System.out.println("직원 이름: " + user.getName());
+		System.out.println("직원 전화번호: " + user.getPhone());
+		System.out.println("직원 주소: " + user.getAddr());
+		System.out.println("직원 성별: " + user.getGender());
+		System.out.println("직원 생일: " + user.getBirthDate());
+		System.out.println("부서 번호: " + department.getDeptNo());
+		System.out.println("부서명: " + department.getDeptName());
+
 	}
 }
