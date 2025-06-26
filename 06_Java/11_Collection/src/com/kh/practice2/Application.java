@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.kh.practice2.controller.BookController;
+import com.kh.practice2.controller.MemberController;
 import com.kh.practice2.model.Book;
 import com.kh.practice2.model.Member;
 
@@ -13,7 +14,9 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         BookController bc = new BookController();
         ArrayList<Member> members = new ArrayList<>();
-
+        MemberController mc = new MemberController();
+        Member m = new Member();
+        Book book = new Book();
         // 도서 목록 (미사용이지만 향후 대여 기능에 필요)
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book("디스 이즈 이탈리아", false, 0));
@@ -26,34 +29,20 @@ public class Application {
 
         while (true) {
             // 로그인
-            Member member = null;
-            while (true) {
-                System.out.print("이름을 입력하세요 : ");
-                String name = sc.nextLine();
-                System.out.print("나이를 입력하세요 : ");
-                int age = Integer.parseInt(sc.nextLine());
-
-                boolean duplicate = false;
-                for (Member m : members) {
-                    if (m.getName().equals(name)) {
-                        duplicate = true;
-                        System.out.println("이미 존재하는 이름입니다. 다시 입력해주세요.");
-                        break;
-                    }
-                }
-
-                if (!duplicate) {
-                    member = new Member(name, age);
-                    members.add(member);
-                    bc.inputInfo(name, age); // 컨트롤러에 저장
-                    break;
-                }
+        	 System.out.print("이름을 입력하세요: ");
+             String name = sc.nextLine();
+             
+             System.out.print("나이를 입력하세요: ");
+             int age = Integer.parseInt(sc.nextLine());
+             
+             
+            if(!mc.registerAndLogin(name, age)) {
+            	 continue;
             }
-
             // 메뉴 화면
             while (true) {
                 try {
-                    System.out.println("\n===== 메뉴 =====");
+                    System.out.println("===== 메뉴 =====");
                     System.out.println("1. 마이페이지");
                     System.out.println("2. 도서 대여");
                     System.out.println("3. 로그아웃");
@@ -64,15 +53,26 @@ public class Application {
 
                     switch (menu) {
                         case 1:
-                            System.out.println("회원 이름 : " + member.getName());
-                            System.out.println("회원 나이 : " + member.getAge());
+                        	Member me = mc.getMember();
+                        	if (m != null) {
+                            System.out.println("회원 이름 : " + me.getName());
+                            System.out.println("회원 나이 : " + me.getAge());
+                        	}
                             break;
                         case 2:
                             // 도서 대여 로직은 추후 구현
-                            System.out.println("도서 대여 기능은 준비 중입니다.");
+                        	for(int i =0; i < books.size(); i++)
+                        		System.out.println((i+1)+"번 : "+ books.get(i).getTitle() + ", " +books.get(i).isCoupon() +", "+books.get(i).getAccessAge());
+                        	System.out.println("도서 번호를 선택해주세요 : ");
+                        	int bookNum = Integer.parseInt(sc.nextLine()) -1 ;
+                        	if (bookNum >= 0 && bookNum < books.size()) {
+                        		Book select = books.get(bookNum);
+                        		String result = bc.rentBook(select, mc.getMember());
+                        		System.out.println("대여 완료되었습니다.");
+                        	} else System.out.println("도서가 없습니다.");
                             break;
                         case 3:
-                            System.out.println("로그아웃 합니다.\n");
+                            System.out.println("로그아웃 합니다.");
                             break; // 로그인으로 돌아감
                         case 4:
                             System.out.println("프로그램 종료");
@@ -89,4 +89,4 @@ public class Application {
             }
         }
     }
-}
+} 

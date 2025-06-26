@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Book {
-
+	
 	private String title;
 	private boolean coupon;
 	private int accessAge;

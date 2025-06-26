@@ -9,7 +9,7 @@ public class Controller {
 	UserInfo info = new UserInfo();
 	Department dept = new Department();
 
-<<<<<<< Updated upstream
+
 	private UserInfo[] userList = { new UserInfo(), new UserInfo(), new UserInfo() };
 
 	private int count = 0;
@@ -110,7 +110,7 @@ public class Controller {
 //		dept.setDeptNo(deptNo);
 //		dept.setDeptName(deptName);
 //	}
-=======
+
 	public void inputInfo(int userNo, String userId, String password, String email, String name) {
 		info.setUserNo(userNo);
 		info.setUserId(userId);
@@ -134,5 +134,5 @@ public class Controller {
 		dept.setDeptNo(deptNo);
 		dept.setDeptName(deptName);
 	}
->>>>>>> Stashed changes
+
 }
