@@ -13,6 +13,10 @@ public class Application {
 	UserInfo user = new UserInfo();
 	Department department = new Department();
 	Controller cont = new Controller();
+<<<<<<< Updated upstream
+=======
+	public static void main(String[] args) {
+>>>>>>> Stashed changes
 
 	public static void main(String[] args) {
 		
@@ -55,6 +59,7 @@ public class Application {
 	public void insertEmp() {
 		System.out.print("직원 번호 : ");
 		int userNo = Integer.parseInt(sc.nextLine());
+<<<<<<< Updated upstream
 
 		System.out.print("직원 아이디 : ");
 		String id = sc.nextLine();
@@ -68,6 +73,21 @@ public class Application {
 		System.out.print("직원 이름 : ");
 		String name = sc.nextLine();
 
+=======
+		
+		System.out.print("직원 아이디 : ");
+		String id = sc.nextLine();
+		
+		System.out.print("직원 비밀번호 : ");
+		String password = sc.nextLine();
+		
+		System.out.print("직원 이메일 : ");
+		String email = sc.nextLine();
+		
+		System.out.print("직원 이름 : ");
+		String name = sc.nextLine();
+		
+>>>>>>> Stashed changes
 		cont.inputInfo(userNo, id, password, email, name);
 
 		System.out.print("추가 정보를 더 입력하시겠습니까?(y/n) : ");
@@ -76,6 +96,7 @@ public class Application {
 		if (add == 'y') {
 			System.out.print("직원 전화번호 : ");
 			String phone = sc.nextLine();
+<<<<<<< Updated upstream
 
 			System.out.print("직원 주소 : ");
 			String addr = sc.nextLine();
@@ -86,6 +107,18 @@ public class Application {
 			System.out.print("직원 생일 (예 : 2025-06-23) : "); // LocalDate.parse(문자열) <- 문자열을 날짜로
 			LocalDate birthDate = LocalDate.parse(sc.nextLine());
 
+=======
+			
+			System.out.print("직원 주소 : ");
+			String addr =  sc.nextLine();
+			
+			System.out.print("직원 성별 : ");
+			String gender =  sc.nextLine();
+			
+			System.out.print("직원 생일 (예 : 2025-06-23) : "); // LocalDate.parse(문자열) <- 문자열을 날짜로
+			LocalDate birthDate = LocalDate.parse(sc.nextLine());
+			
+>>>>>>> Stashed changes
 			System.out.print("부서 번호 입력 : ");
 			int deptNo = Integer.parseInt(sc.nextLine());
 			department.setDeptNo(deptNo);
@@ -93,10 +126,18 @@ public class Application {
 			System.out.print("부서명 입력 : ");// 너무 어렵다면 생략!
 			String deptName = sc.nextLine();
 			department.setDeptName(deptName);
+<<<<<<< Updated upstream
 
 			cont.inputInfo(phone, addr, gender, birthDate, department);
 		}
 
+=======
+			info.setDepartment(department);
+			
+			cont.addInfo(phone, addr, gender, birthDate, deptNo, deptName);
+		}
+		
+>>>>>>> Stashed changes
 	}
 
 	// 수정할 데이터를 사용자에게 받는 메서드
@@ -104,6 +145,7 @@ public class Application {
 		System.out.println("수정하려면 로그인이 필요합니다.");
 		System.out.print("아이디 입력 : ");
 		String id = sc.nextLine();
+<<<<<<< Updated upstream
 
 		System.out.print("비밀번호 입력 : ");
 		String password = sc.nextLine();
@@ -158,6 +200,52 @@ public class Application {
 				break;
 			case 9:
 				break;
+=======
+		
+		System.out.print("비밀번호 입력 : ");
+		String password = sc.nextLine();
+		// 아이디랑 비밀번호가 틀리다면!
+		
+		if (!id.equals(info.getUserId()) || !password.equals(info.getPassword())) {
+			System.out.println("로그인 실패! 정보 수정할 수 없습니다");
+		} else {// 아이디와 비밀번호 성공했을시에만!
+			while (true) {
+				System.out.println("직원의 어떤 정보를 수정하시겠습니까?");
+				System.out.println("1. 전화 번호");
+				System.out.println("2. 생일");
+				System.out.println("3. 부서");
+				System.out.println("9. 돌아가기");
+				System.out.print("메뉴 번호를 누르세요 : ");
+				int select = Integer.parseInt(sc.nextLine());
+
+				switch (select) {
+				case 1:
+					System.out.print("전화 번호 수정 : ");
+					String phone = info.setPhone(sc.nextLine());
+					System.out.println("수정이 완료 되었습니다.");
+					
+					break;
+				case 2:
+					System.out.print("생일 수정 (예 : 2025-06-23) : ");
+					LocalDate birthDate = info.setBirthDate(LocalDate.parse(sc.nextLine()));
+					System.out.println("수정이 완료 되었습니다.");
+					break;
+				case 3:
+					System.out.print("부서 번호 수정 : ");
+					int deptNo = Integer.parseInt(sc.nextLine());
+					department.setDeptNo(deptNo);
+					info.setDepartment(department);
+					
+					System.out.print("부서명 수정 : ");
+					String deptName = sc.nextLine();
+					department.setDeptName(deptName);
+					info.setDepartment(department);
+					System.out.println("수정이 완료 되었습니다.");
+					break;
+				case 9:
+					break;
+				}
+>>>>>>> Stashed changes
 			}
 			
 			cont.updateUser(user);
