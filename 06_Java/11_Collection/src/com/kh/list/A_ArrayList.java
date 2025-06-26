@@ -1,6 +1,8 @@
 package com.kh.list;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import com.kh.list.model.Person;
 
@@ -37,29 +39,26 @@ import com.kh.list.model.Person;
 public class A_ArrayList {
 
 	/*
-	 * 제네릭(Generics) : <>
-	 * - 컴파일 시 타입을 체크해 주는 기능
-	 * - 다이아몬드 연산자 라고도 함.
+	 * 제네릭(Generics) : <> - 컴파일 시 타입을 체크해 주는 기능 - 다이아몬드 연산자 라고도 함.
 	 * 
-	 * 컬렉션에서 사용하는 이유 
-	 * -> 명시된 타입의 객체만 저장하도록 제한을 주기 위함
+	 * 컬렉션에서 사용하는 이유 -> 명시된 타입의 객체만 저장하도록 제한을 주기 위함
 	 * 
-	 * */
-	
+	 */
+
 	public void method1() {
 		ArrayList<String> list = new ArrayList<String>();
-	
-		//list.add(1);
+
+		// list.add(1);
 		list.add("이승민");
 		list.add(null); // 초기값이라 가능
-		//list.add(true);
-		
+		// list.add(true);
+
 		System.out.println(list);
 	}
-	
+
 	public void method2() {
 		ArrayList<Person> list = new ArrayList<>();
-		
+
 		// 1. add : 추가
 		list.add(new Person("전현무", "삼성동", 47));
 		list.add(new Person("박나래", "이태원동", 39));
@@ -67,26 +66,89 @@ public class A_ArrayList {
 		// --> 내부적으로 기존에 있는 것들은 뒤로 밀리고 해당 인덱스에 추가됨.
 		list.add(1, new Person("기안84", "과천시", 40));
 		System.out.println(list);
-		
+
 		// 2. set : 해당 인덱스의 값 변경
 		list.set(0, new Person("키", "한남동", 33));
 		System.out.println(list);
-		
+
 		// 3. size : 리스트 안에 몇 개의 데이터가 있는지 arr.length같은 느낌
 		System.out.println("사람 수 : " + list.size());
-		
+
 		// 4. remove : 해당 인덱스의 객체 삭제
 		list.remove(2);
+
 		System.out.println(list);
-		
+
 		// 5. get : 해당 인덱스의 객체 가져오기
 		System.out.println(list.get(1));
-	}
-	public static void main(String[] args) {
+
+		// 6. sublist : 기존 리스트에서 원하는 만큼 추출해서 새로운 리스트 반환
+		list.add(new Person("전현무", "삼성동", 47));
+		list.add(new Person("박나래", "이태원동", 39));
+		System.out.println(list);
+		System.out.println("-----------------------------------------------------------------");
+		List<Person> subList = list.subList(0, 2);
+		// 끝 인덱스 앞까지
+		System.out.println(subList);
+		System.out.println(list);
+		System.out.println("-----------------------------------------------------------------");
+		// 7. addAll : 컬렉션을 통째로 추가
+		list.addAll(subList);
+		System.out.println(list);
+		System.out.println("-----------------------------------------------------------------");
+		// 8. isEmpty : 컬렉션이 비어있는지 - boolean 값 반환
+		System.out.println("리스트가 비어 있는지 ? " + list.isEmpty());
+
+		// 리스트에 저장된 사람들의 평균 연령 출력
+		System.out.println(list.get(1));
+		int sum = 0;
+		int avg = 0;
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).getAge());
+			sum += list.get(i).getAge();
+			avg = sum / list.size();
+		}
+		System.out.println("평균 나이는 :" + avg);
+		// 저장된 사람들의 이름만 출력
+		for (Person person : list) {
+			System.out.println(person.getName());
+		}
+		//나이 순서대로 정렬 -> 이름순으로
+		Collections.sort(list);
+		System.out.println(list);
 		
+		
+		// 9. clear : 싹 비우기
+		list.clear();
+		System.out.println(list);
+	}
+
+	
+	public void method3() {
+		List<String> list = new ArrayList<>();
+		list.add("banana");
+		list.add("orange");
+		list.add("apple");
+		list.add("mango");
+		list.add("grape");
+		
+		// 10. 오름차순 정렬 : Comparable 인터페이스를 구현하고 있는 요소를 가지고 비교값들 반환하여 정렬
+		//Collections.sort(list);
+		
+		// 11. 내림차순 정렬 : 'sort'메서드로 오름차순 정렬후 'reverse'로 정렬
+		// 그냥 하게 되면 지금 들어가 있는 상태로 뒤집음 (정확 X)
+		Collections.reverse(list);
+		System.out.println(list);
+		
+		
+	}
+	
+	public static void main(String[] args) {
+
 		A_ArrayList a = new A_ArrayList();
 //		a.method1();
 		a.method2();
+//		a.method3();
 	}
 
 }
