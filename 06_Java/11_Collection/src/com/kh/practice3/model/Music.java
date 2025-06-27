@@ -1,4 +1,4 @@
-package com.kh.practice2.model;
+package com.kh.practice3.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Book {
-	
-	private String title;
-	private boolean coupon;
-	private int accessAge;
-	
+public class Music {
+
+	private String artist;
+	private String song;
+
 }
