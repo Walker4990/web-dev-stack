@@ -3,7 +3,7 @@ package com.kh.practice3;
 import java.util.List;
 import java.util.Scanner;
 
-import com.kh.practice3.controller.MusicController;
+import com.kh.practice3.comtroller.MusicController;
 import com.kh.practice3.model.Music;
 
 public class Application {
@@ -92,13 +92,7 @@ public class Application {
 		System.out.println("****** 전체 곡 목록 출력 ******");
 		List<Music> music = mc.printAll();
 
-		if (music.isEmpty()) {
-			System.out.println("목록이 비었습니다.");
-		} else {
-			for (int i = 0; i < music.size(); i++) {
-				System.out.println(i + "." + music.get(i).getSong() + " - " + music.get(i).getArtist());
-			}
-		}
+		
 
 	}
 
@@ -113,15 +107,9 @@ public class Application {
 		System.out.println("***** 특정 곡 검색 ****** ");
 		System.out.print("키워드를 입력하세요 : ");
 		String keyWord = sc.nextLine();
-		List<Music> music = mc.searchMusic();
-		boolean found = false;
+		List<Music> music = mc.searchMusic(keyWord);
 		
-		for (Music m : music) {
-			if (m.getArtist().contains(keyWord) || m.getSong().contains(keyWord)) {
-				found = true;
-				System.out.println(m.getArtist() + " - " + m.getSong());
-			} 
-			}
+		boolean found = false;
 		if (found= false)
 			System.out.println("검색할 곡을 찾지 못했습니다.");
 		}
@@ -137,9 +125,7 @@ public class Application {
 
 		System.out.println("****** 특정 곡 수정 ******");
 		List<Music> music = mc.printAll();
-		for (int i = 0; i < music.size(); i++) {
-			System.out.println(i + ".  " + music.get(i).getSong() + " - " + music.get(i).getArtist());
-		}
+		
 		System.out.print("검색할 곡명 : ");
 		String searchMusic = sc.nextLine();
 		System.out.print("수정할 곡명 :");
@@ -160,20 +146,15 @@ public class Application {
 		/*
 		 * ****** 특정 곡 삭제 ****** 삭제할 곡명 :
 		 * 
-		 * 삭제에 성공한다면 "(삭제한 가수 - 삭제한 곡)을 삭제했습니다." 실패한다면 "삭제할 곡이 없습니다."
+		 * 삭제에 성공한다면 "(삭제한 가수 - 삭제한 곡)을 삭제했습니다." 
+		 * 실패한다면 "삭제할 곡이 없습니다."
 		 */
 		List<Music> music = mc.printAll();
 		System.out.println("삭제하실 곡을 입력해주세요 : ");
 		String song = sc.nextLine();
-		for (int i = 0; i < music.size(); i++) {
-			if (song.equals(music.get(i).getSong())) {
-				System.out.println(music.get(i).getSong() + " - " + music.get(i).getArtist() + "의 곡이 삭제되었습니다.");
-				music.remove(i);
-
-			} else
-				System.out.println("삭제할 곡이 없습니다.");
+		mc.removeMusic(song);
+		
 		}
 
 	}
 
-}
