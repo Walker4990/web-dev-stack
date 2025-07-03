@@ -211,11 +211,11 @@ FOREIGN KEY (SCHEDULE_NO) REFERENCES SCHEDULE(SCHEDULE_NO);
 
 -- 고객관계관리, 인적자원관리, 재무관리, 품질보증관리
 -- 가장 해볼만 하다 싶은거 1개 OR 여러개 해도 괜찮음
-
+/*
 -- 고객관계관리
 CREATE TABLE CRM(
 User
-- id (PK)
+-- id (PK)
 - name
 - email
 - role (담당자, 관리자 등)
@@ -244,4 +244,4 @@ Sales
 - status (진행중, 완료 등)
 - expected_close_date
 );
-
+*/
