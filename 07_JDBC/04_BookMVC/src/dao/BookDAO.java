@@ -77,20 +77,25 @@ public class BookDAO {
 
 	
 	// 3. 책 삭제
-	public boolean sellBook(int bookNo) throws SQLException {
+	public boolean deleteBook(int bookNo) throws SQLException {
 		Connection connect = connect();
 		String query = "DELETE FROM book where book_no =?";
 		PreparedStatement ps = connect.prepareStatement(query);
-		ResultSet rs = ps.executeQuery();
+		
 		
 		ps.setInt(1, bookNo);
 		
 		int result = ps.executeUpdate();
 
+		 
 		return result == 1;
 	}
 		
-		
+//	 boolean result = bc.deleteBook(bookNo);
+//	 if (result) {
+//		 list.remove(bookNo);
+//		 System.out.println("삭제 완료");
+//		 return true;
 	
 	}
 

@@ -14,7 +14,7 @@ public class DBConnectionTest1 {
 		
 		// JDBC (Java Database Connectivity) 
 		Connection connect = null;
-		PreparedStatement ps = null;
+		PreparedStatement ps =null;
 		ResultSet rs = null;
 		try {
 			// 1. 드라이버 로딩
@@ -22,25 +22,23 @@ public class DBConnectionTest1 {
 			System.out.println("1. 드라이버 로딩...!");
 			
 			// 2. 데이터베이스 연결
-			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/sakila", "root", "qwer1234");
-			System.out.println("2. 데이터베이스 연결...!");
+			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/saklia", "root", "qwer1234");
+			System.out.println("2. 데이터 베이스 연결..!");
 			
-			// 3. PreparedStatement 객체 생성 -> 쿼리 : SELECT문 사용해서 film 
+			// 3. PreparedStatement 객체 생성 -> 쿼리 : SELECT문 사용해서 film
 			ps = connect.prepareStatement("SELECT * FROM film");
 			
 			// 4. 쿼리 실행
 			rs = ps.executeQuery();
-			
+//			System.out.println(rs.next()); //  내용이 없을떄까지 계속뜸
 			while(rs.next()) {
 				int filmId = rs.getInt("film_id");
 				String title = rs.getString("title");
 				String desc = rs.getString("description");
-				LocalDate update = rs.getDate("last_update").toLocalDate();
+				LocalDate update = rs.getDate("last_update").toLocalDate(); // 로컬데이트로 변환
 				double cost = rs.getDouble("replacement_cost");
-				System.out.println(filmId + " / " + title + " / " + desc + " / " + update + " / " + cost);
 			}
-			
-			
+		
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {

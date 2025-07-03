@@ -31,12 +31,12 @@ public class BookRentApp {
 			// 1. 전체 책 조회 - 로그인 X
 			// 2. 회원가입 - 로그인 X
 			// 3. 로그인 - 로그인 X
-			
+
 			// 관리자로 로그인 했을 때
 			// 1. 책 등록 - 로그인 O (관리자 : admin, 1234)
 			// 2. 책 삭제 - 로그인 O (관리자 : admin, 1234)
 			// 3. 로그아웃 - 로그인 O
-			
+
 			// 1. 회원탈퇴 - 로그인 O (관리자 X)
 			// 2. 책 대여 - 로그인 O
 			// 3. 내가 대여한 책 조회 - 로그인 O
@@ -75,13 +75,13 @@ public class BookRentApp {
 				deleteBook();
 				break;
 			case 4:
-				membership();
+				register();
 				break;
 			case 5:
 				login();
 				break;
 			case 6:
-				withdraw();
+				delete();
 				break;
 			}
 
@@ -90,19 +90,17 @@ public class BookRentApp {
 
 	public void printBookAll() {
 		ArrayList<Book> list = bc.printBookAll();
-		if(list.isEmpty()) {
+		if (list.isEmpty()) {
 			System.out.println("등록된 책이 없습니다.");
-		return;
+			return;
 		}
-		
+
 		for (Book b : list) {
 			System.out.println(b);
 		}
 	}
 
 	public boolean registerBook() {
-
-	
 
 		try {
 			System.out.println("등록할 책 이름 : ");
@@ -114,31 +112,66 @@ public class BookRentApp {
 			System.out.println("등록할 제한 나이 : ");
 			int accessAge = Integer.parseInt(sc.nextLine());
 			boolean result = bc.registerBook(title, author, accessAge);
-			
-			if(result) {
+
+			if (result) {
 				System.out.println("책 등록 완료");
-			} else System.out.println("책 등록 불가");
+			} else
+				System.out.println("책 등록 불가");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;
-		
-		
+
 	}
 
 	public void deleteBook() {
+		ArrayList<Book> list = bc.printBookAll();
+		System.out.print("삭제할 책 번호 > ");
+		int bookNo = Integer.parseInt(sc.nextLine());
 
+		boolean result = bc.deleteBook(bookNo);
+		if (result)
+			System.out.println(bookNo + "번의 책이 삭제되었습니다.");
+		else
+			System.out.println("해당 번호의 책이 없습니다.");
 	}
 
-	public void membership() {
+	public void register() {
+		System.out.print("아이디 입력 > ");
+		String id = sc.nextLine();
+		System.out.print("이름 입력 > ");
+		String name = sc.nextLine();
+		System.out.print("비밀번호 입력 > ");
+		String pwd = sc.nextLine();
+		System.out.print("나이 입력 > ");
+		int age = Integer.parseInt(sc.nextLine());
 
+		Member member = new Member(id, name, pwd, age);
+
+		mc.register(member);
 	}
 
 	public void login() {
+		System.out.print("아이디 입력 > ");
+		String id = sc.nextLine();
+		System.out.print("비밀번호 입력 > ");
+		String pwd = sc.nextLine();
+		
+		Member member = new Member();
+		member.setId(id);
+		member.setPwd(pwd);
+		Member result = mc.login(id, pwd);
+		if (result != null) {
+			System.out.println(member.getName() +"님 로그인 성공!");
+		}else System.out.println("아이디 혹은 비밀번호가 틀렸습니다.");
+		
 
 	}
 
-	public void withdraw() {
-
+	public void delete() {
+		System.out.print("아이디 입력 > ");
+		String id = sc.nextLine();
+		mc.delete(id);
+		
 	}
 }

@@ -30,7 +30,7 @@ public class DBConnectionTest2 {
 			ps.setString(3, "김미경");
 			
 			
-			// 4. 쿼리문 실행 - ps.executeUpdate()
+			// 4. 쿼리문 실행 - ps.executeUpdate() - int타입 얼만큼 업데이트 되었는가
 			System.out.println(ps.executeUpdate() + "명 추가!");
 			
 		} catch (Exception e) {

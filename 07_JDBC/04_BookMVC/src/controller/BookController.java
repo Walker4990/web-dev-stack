@@ -44,12 +44,11 @@ public class BookController {
 	}
 
 	// 3. 책 삭제
-	public boolean sellBook(int bookNo) {
+	public boolean deleteBook(int bookNo) {
 		// 누군가 빌려있는 책은 삭제 불가
 		try {
-			return dao.sellBook(bookNo);
+			return dao.deleteBook(bookNo);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			return false;
 		}
 
