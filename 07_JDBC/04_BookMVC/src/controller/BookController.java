@@ -6,52 +6,69 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dao.BookDAO;
+import dao.MemberDAO;
+import dao.RentDAO;
 import vo.Book;
 
 public class BookController {
-	private BookDAO dao = new BookDAO();
-
+	
+	
+	BookDAO instance = BookDAO.getInstance();
+	RentDAO instance2 = RentDAO.getInstance();
 	// 1. 전체 책 조회
 	public ArrayList<Book> printBookAll() {
-		
+
 		try {
-			return dao.printBookAll();
+			return instance.printBookAll();
 		} catch (SQLException e) {
-			return null;
+			return new ArrayList<>();
 		}
 	}
 
 	// 2. 책 등록
-	public boolean registerBook(String title, String author, int accessAge) throws SQLException {
-		// 기존 제목, 저자, 제한 나이까지 동일한 책이 있으면 안됨
-		Book book = new Book(title, author, accessAge);
-
-		if(dao.duplicateBook(book)) {
-			System.out.println("이미 등록된 책입니다.");
+	public boolean registerBook(String title, String author, int accessAge) {
+		try {
+			if (instance.duplicateBook(title, author, accessAge)) {
+				System.out.println("이미 등록된 책입니다.");
+				return false;
+			}
+			Book book = new Book(title, author, accessAge);
+			boolean success = instance.registerBook(book);
+			if (success) {
+				return success;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 			return false;
 		}
-		boolean result = dao.insertBook(title, author, accessAge);
-		if(result) {
-			System.out.println("책이 등록되었습니다.");
-		} else System.out.println("책 등록 실패");
-		return result;
-
 	}
 
-	private Connection getConnection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	// 3. 책 삭제
-	public boolean deleteBook(int bookNo) {
+//	public boolean deleteBook(int bookNo) {
+//		// 누군가 빌려있는 책은 삭제 불가
+//		try {
+//	if (!instance2.rentedBook()) {
+//		System.out.println("삭제 불가능");
+//	}
+//			return instance.deleteBook(bookNo);
+//		} catch (SQLException e) {
+//			return false;
+//		}
+//
+//	}
+	public boolean deleteBook(String title) {
 		// 누군가 빌려있는 책은 삭제 불가
 		try {
-			return dao.deleteBook(bookNo);
+			if (!instance2.rentedBook()) {
+				System.out.println("삭제 불가능");
+			}
+			return instance.deleteBook(instance.searchBook(title));
 		} catch (SQLException e) {
 			return false;
 		}
-
 
 	}
 

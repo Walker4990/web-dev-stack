@@ -9,10 +9,14 @@ import lombok.NoArgsConstructor;
 @Data
 public class Book {
 
-	public Book(String title, String author, int accessAge) {
-	}
-	private int bookNO; // primary key
+	private int bookNo; // primary key
 	private String title;
 	private String author;
 	private int accessAge; // access_age
+
+	public Book(String title, String author, int accessAge) {
+		this.title = title;
+		this.author = author;
+		this.accessAge = accessAge;
+	}
 }
