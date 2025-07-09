@@ -29,11 +29,12 @@
 	<td><%=m.getName() %></td>
 	<td><%=m.getAge() %></td>
 </tr>
+<%}%>
 
-	<%}
-} else {%>
-<p>회원 정보가 없습니다.</p>
+<%} else {%>
+<a href="/">메인 페이지로 이동</a>
 <%} %>
-	</table>
+</table>
+<a href="/">메인 페이지로 이동</a>
 </body>
 </html>

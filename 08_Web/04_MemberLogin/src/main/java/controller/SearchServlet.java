@@ -18,9 +18,6 @@ public class SearchServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
-
 		Member member = null;
 		MemberDAO dao = new MemberDAO();
 		boolean check = true;
@@ -28,12 +25,19 @@ public class SearchServlet extends HttpServlet {
 		try {
 			String id = request.getParameter("id");
 			member = dao.search(id);
+			
+			// 검색 결과가 있으면 check = true
+			if (member != null) {
+				check = true;
+			}
+			
+			request.setAttribute("member", member);
+			request.setAttribute("check", check);
+			request.getRequestDispatcher("/views/result.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		request.setAttribute("member", member);
-		request.setAttribute("check", check);
-		request.getRequestDispatcher("/views/result.jsp").forward(request, response);
+		
 	}
 
 }
