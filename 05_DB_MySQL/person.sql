@@ -45,3 +45,6 @@ CREATE TABLE rent(
     ALTER TABLE rent DROP CONSTRAINT rent_ibfk_1;
 ALTER TABLE rent ADD FOREIGN KEY (id) REFERENCES member(id);
 ALTER TABLE rent ADD FOREIGN KEY (book_no) REFERENCES book(book_no);
+
+select * from book;
+select * from member;
