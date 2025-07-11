@@ -1,4 +1,4 @@
-<%@page import="vo.Member"%>
+<%@page import="com.kh.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -13,13 +13,13 @@
 	<ul>
 		<c:choose>
 			<c:when test="${empty member}">
-				<li><a href="/views/register.jsp">회원가입</a></li>
-				<li><a href="/views/login.jsp">로그인</a></li>
+				<li><a href="/register">회원가입</a></li>
+				<li><a href="/login">로그인</a></li>
 			</c:when>
 			<c:otherwise>
-				<li><a href="/views/search.jsp">회원검색</a></li>
-				<li><a href="/allMember.do">전체 회원 보기</a></li>
-				<li><a href="/logout.do">로그아웃</a></li>
+				<li><a href="/search">회원검색</a></li>
+				<li><a href="/searchAll">전체 회원 보기</a></li>
+				<li><a href="/out">로그아웃</a></li>
 			</c:otherwise>
 		</c:choose>
 	</ul>
