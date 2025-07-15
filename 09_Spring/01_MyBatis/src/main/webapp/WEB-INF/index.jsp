@@ -19,12 +19,31 @@
 						나이 : <input type="text" name="age" value="${member.age}"> <br>
 						<input type="submit" value="회원정보 수정">
 					</form>
+					
+					<h2> 비밀번호만 변경</h2>
+					<form action="/update" method="post">
+						비밀번호 : <input type="password" name="pwd"><br>
+						<input type="submit" value="비밀번호 변경"> <br>
+		<!-- primarykey가 id일 것-->
+		<a href="/delete">회원탈퇴</a>
 		</c:when>
 		<c:otherwise>
 			<a href="/register"> 회원가입</a>
 			<a href="/login"> 로그인<a><br>
 		</c:otherwise>
 		</c:choose>
+		
+		<form action="/">
+			<select name="select"> 
+				<option value="all">이름 또는 아이디</option>
+				<option value="id">아이디</option>
+				<option value="name">이름</option>
+				
+				</select>
+			<input type="text" name="keyword" placeholder="아이디 입력" value=${param.keyword}>
+			<input type="submit" value="검색">
+			</form>
+			
 		
 		<!-- 회원 전체 목록이 나오고 -->
 			<table>

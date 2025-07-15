@@ -1,0 +1,29 @@
+:root {
+  --side-width: 250px;
+  --header-height: 60px;
+}
+
+.side {
+  position: fixed;
+  background-color: deepskyblue;
+  color: white;
+  width: var(--side-width);
+  height: 100%;
+  overflow-y: auto;
+  /*  overflow-y: auto; 사이드 바 전용스크롤 */
+}
+
+.main {
+  padding-left: var(--side-width);
+}
+
+.main header {
+  position: fixed;
+  background-color: deeppink;
+  width: 100%;
+  height: var(--header-height);
+}
+
+.main section {
+  padding-top: var(--header-height);
+}
