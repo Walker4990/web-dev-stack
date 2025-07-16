@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.mybatis.model.dto.SearchDTO;
 import com.kh.mybatis.model.vo.Member;
@@ -121,5 +122,14 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	@PostMapping("/delete")
+	public String delete(@RequestParam(name="idList", required=false) List<String> idList) {
+		// 어디로 요청하는가 ? -> /delete
+		// 어떤 방식으로? get/post
+		// 요청을 보낼때 보내는 값이 있냐? @RequestParam(....) 정석적으로는 원래 다 기재를 해야하나, 편의상 생략도 가능함.
+		// head와 body로 나뉘어져 있고 우리는 지금 까지 head로 처리만 했음..
+		if(idList!=null) service.selectDelete(idList);
+		return "redirect:/";
+	}
 	
 }

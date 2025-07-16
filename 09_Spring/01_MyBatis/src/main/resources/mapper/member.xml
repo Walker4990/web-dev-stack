@@ -25,6 +25,8 @@
 		SELECT *
 		FROM member
 		<where>
+			<!-- 
+		
 			<if test="select == 'all' and keyword != null and keyword != ''">
 			id LIKE CONCAT('%', #{keyword}, '%')
 			OR 	name LIKE CONCAT('%', #{keyword}, '%')
@@ -35,6 +37,20 @@
 			<if test="select=='name' and keyword !=null and keyword!=''">
 			name LIKE CONCAT('%', #{keyword}, '%')
 			</if>
+			-->
+			<choose>
+				<when test="select == 'all' and keyword != null and keyword != ''">
+				id LIKE CONCAT('%', #{keyword}, '%')
+			OR 	name LIKE CONCAT('%', #{keyword}, '%')
+				</when>
+				<when test="select =='id' and keyword !=null and keyword!=''">
+				id LIKE CONCAT('%', #{keyword}, '%')
+				</when>
+				<when test="select=='name' and keyword !=null and keyword!=''">
+				name LIKE CONCAT('%', #{keyword}, '%')
+				</when>
+				<!-- <ohterwise></ohterwise>도 사용가능-->
+			</choose>
 		</where>
 		
 	</select>
@@ -79,4 +95,22 @@
 		DELETE FROM member
 		where id =#{id}
 	</delete>
+	
+	<!-- foreach : 동적 쿼리를 구현할 때 컬렉션에 대한 반복 처리 제공 -->
+	<delete id="selectDelete" parameterType="ArrayList">
+		DELETE FROM member WHERE id IN 
+		<foreach collection="idList" item="id" open="(" close=")" separator=",">
+		<!-- 변수 : item, IN 뒤에 (로 시작 : open, 괄호닫기 : close, 구분자 : separator-->
+			#{id}
+		</foreach>
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </mapper>
