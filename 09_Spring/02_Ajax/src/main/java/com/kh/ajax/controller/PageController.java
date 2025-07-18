@@ -22,4 +22,8 @@ public class PageController {
 	public String ajax4() {
 		return "04_serialize";
 	}
+	@GetMapping("/ajax5")
+	public String ajax5() {
+		return "05_formdata";
+	}
 }

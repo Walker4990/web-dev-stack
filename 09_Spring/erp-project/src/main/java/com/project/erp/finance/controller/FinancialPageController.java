@@ -12,8 +12,18 @@ public class FinancialPageController {
 	@GetMapping("/salary")
 	public String salary(Model model) {
 		model.addAttribute("component", "../component/finance/salary.jsp");
+		model.addAttribute("pageTitle", "재무 관리 > 급여 관리");
 		return "/common/layout";
-		
 	}
-	
+
+	@GetMapping("/sale")
+	public String sale(Model model) {
+		model.addAttribute("component","../component/finance/sale.jsp");
+		return "/common/layout";
+	}
 }
+
+
+
+
+

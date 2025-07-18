@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor
 public class Salary {
+	
 	private int salaryNo; // 급여 번호
 	private LocalDate salaryDate; // 지급일
 	private int baseSalary; // 기본급
@@ -18,3 +19,8 @@ public class Salary {
 	private int userNo; // 사용자 번호
 	
 }
+
+
+
+
+

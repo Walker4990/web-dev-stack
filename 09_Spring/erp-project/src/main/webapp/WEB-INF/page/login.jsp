@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<h1>로그인 페이지</h1>
-	
 </body>
 </html>
+

@@ -20,8 +20,12 @@ public class MemberService implements MemberMapper{
 	
 	@Override
 	public boolean idBoolCheck(String id) {
-		// TODO Auto-generated method stub
 		return mapper.idBoolCheck(id);
+	}
+
+	@Override
+	public void register(Member vo) {
+		mapper.register(vo);
 	}
 	
 	

@@ -15,21 +15,19 @@
 			아이디 : <input type="text" name="id"><br>
 			비밀번호 : <input type="password" name="pwd"><br>
 			이름 : <input type="text" name="name"><br>
+			나이 : <input type="age" name="age"><br>
 			<input type="button" value="회원가입" id="btn">
 		</form>
+		<div id="result"></div>
 		<script>
-			$("#btn").click(() => {
-		$.ajax({
+		$("#btn").click(() => {
+			$.ajax({
 						type: "post",
 						url: "/signup",
 						data: $("#frm").serialize(),
-						success: function(result){
-							if(result=== false || result==="false") 
-							$("#idCheckView").text("사용가능한 아이디입니다.");
-							else $("#idCheckView").text("사용 불가능한 아이디입니다.");
+						success: function(response){
+							$("#result").text(response.name + "님이 회원가입 하셨습니다.")
 						},
-						
-							
 					});
 			});
 		</script>
