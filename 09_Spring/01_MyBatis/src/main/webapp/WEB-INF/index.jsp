@@ -38,7 +38,6 @@
 				<option value="all">이름 또는 아이디</option>
 				<option value="id">아이디</option>
 				<option value="name">이름</option>
-				
 				</select>
 			<input type="text" name="keyword" placeholder="아이디 입력" value=${param.keyword}>
 			<input type="submit" value="검색">

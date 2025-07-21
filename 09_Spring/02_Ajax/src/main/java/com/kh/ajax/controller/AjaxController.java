@@ -37,6 +37,7 @@ public class AjaxController {
 	public String encoding(String nickname) {
 		return nickname;
 	}
+	
 	@ResponseBody
 	@PostMapping("/idCheck")
 	public boolean idCheck(String id) {

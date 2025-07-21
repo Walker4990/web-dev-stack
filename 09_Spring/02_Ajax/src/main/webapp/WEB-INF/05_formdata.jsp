@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 	
@@ -19,6 +18,7 @@
 			<button id="btn">회원가입</button>
 		</div>
 		<div id="result"></div>
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 		<script>
 		$("#btn").click(() => { // formData -> 자바스크립트의 form형식 이라고 생각하면 편함.
 			const formData = new FormData();
@@ -39,5 +39,6 @@
 					});
 			});
 		</script>
+		
 </body>
 </html>
