@@ -1,4 +1,4 @@
-package com.kh.paging.model.vo;
+package com.kh.paging.vo;
 
 
 import lombok.AllArgsConstructor;

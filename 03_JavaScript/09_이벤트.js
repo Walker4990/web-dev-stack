@@ -134,7 +134,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".container");
   const removeHandler = (e) => {
     console.log("target", e.target); // 내가 클릭한 이미지 선택
-    console.log("crruent", e.currentTarget); // 이벤트 걸린 본인
+    console.log("current", e.currentTarget); // 이벤트 걸린 본인
     if (e.target !== e.currentTarget) e.target.style.display = "none";
   };
   container.addEventListener("click", removeHandler);

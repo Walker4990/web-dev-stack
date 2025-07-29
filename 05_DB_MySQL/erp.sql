@@ -221,7 +221,7 @@ CREATE TABLE FINANCIAL_TRANSACTION(
     TRANS_AMOUNT INT,
 	TRANS_DESC TEXT NOT NULL, -- 지출 및 수입 내역 상세 정보
 	TRANS_DATE DATE NOT NULL, -- 지출 및 수입 내역 발생 member일자
-    USER_NO INT
+    USER_NO INTboard
 );
 
 -- 품질보증관리

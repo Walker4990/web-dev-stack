@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/list.css"></link>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/list.css">
 </head>
 <body>
 	
@@ -41,6 +41,17 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<nav>
+				<ul class="pagination">
+					<li class="page-item ${paging.prev ? '' : 'disabled'}"><a class="page-link" href="/list?page=${paging.startPage - 1}">Previous</a></li>
+
+						<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="page">
+					<li class="page-item"><a class="page-link ${paging.page == page ? 'active' : ''}" href="/list?page=${page}">${page}</a></li>
+						</c:forEach>
+								
+					<li class="page-item ${paging.next ? '' : 'disabled'}"><a class="page-link" href="/list?page=${paging.endPage + 1}">Next</a></li>
+				</ul>
+			</nav>
 		</div>
 		</form>
 </body>
