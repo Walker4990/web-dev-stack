@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.upload.dto.BoardDTO;
+import com.kh.upload.dto.PagingDTO;
 import com.kh.upload.service.BoardService;
 import com.kh.upload.vo.Board;
 
 @Controller
 public class BoardController {
 
+	private String path ="\\\\192.168.0.10\\upload\\";
+	
 	@Autowired
 	private BoardService service;
 	
@@ -35,7 +38,7 @@ public class BoardController {
 				 
 		 String fileName = uuid.toString() + "_" + file.getOriginalFilename();
 				 
-		 File copyFile= new File("\\\\192.168.0.35\\upload\\" + fileName);
+		 File copyFile= new File(path + fileName);
 				 
 				 
 		 try {
@@ -68,8 +71,11 @@ public class BoardController {
 	}
 	
 	@GetMapping("/list")
-	public String list(Model model) {
-		model.addAttribute("list", service.allBoard());
+	public String list(Model model, PagingDTO paging) {
+		int total = service.total(paging.getKeyword());
+		List<Board> list = service.allBoard(paging);
+		model.addAttribute("list", list);
+		model.addAttribute("paging", new PagingDTO(paging.getPage(), total));
 		return "list";
 	}
 	
@@ -101,24 +107,43 @@ public class BoardController {
 	
 	@GetMapping("/update")
 	public String updateBoard(int no, Model model) {
-		   BoardDTO dto = service.searchBoard(no);
-		    model.addAttribute("board", dto);
+		BoardDTO dto = service.searchBoard(no);
+		model.addAttribute("board", dto);
 		return "update";
 	}
 	@PostMapping("/update")
-	public String updateBoard(int no, String title, String content, String url, MultipartFile file) {
-		Board board = new Board();
-		board.setContent(content);
-		board.setTitle(title);
-		board.setNo(no);
+	public String updateBoard(BoardDTO dto, MultipartFile newFile) {
+		// 새로운 파일로 수정 -> 기존 파일은 삭제하고 해당파일을 업로드하고 DB URL을 수정
+		if(newFile!=null && !newFile.isEmpty()) {
+		// 1. 기존 파일 삭제
+		File file = new File(path + dto.getUrl());
+		file.delete();
 		
-		String fileName = fileUpload(file);
-		board.setUrl(fileName);
-		service.updateBoard(board);
-		return "redirect:/view?no="+no;
+		String url = fileUpload(newFile);
+		dto.setUrl(url);
+		}
+		service.updateBoard(dto);
+		// 2. 해당 파일 업로드
 		
+//		Board board = new Board();
+//		board.setContent(content);
+//		board.setTitle(title);
+//		board.setNo(no);
+//		
+//		String fileName = fileUpload(file);
+//		board.setUrl(fileName);
+//		service.updateBoard(board);
+//		return "redirect:/view?no="+no;
+//		
+		return "redirect:/view?no=" + dto.getNo();
 	}
-	
+	@PostMapping("/delete")
+	public String delete(int no, String url) {
+ 		File file = new File(path + url);
+		file.delete();
+		service.deleteBoard(no);
+		return "redirect:/list";
+	}
 	
 	
 }

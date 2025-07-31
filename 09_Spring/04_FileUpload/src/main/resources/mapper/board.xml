@@ -13,12 +13,30 @@
 	VALUES (#{title}, #{content}, #{url})
 </insert>
 
-<select id="allBoard" resultMap="BoardMap">
-	SELECT * FROM board
+<select id="allBoard" parameterType="PagingDTO" resultMap="BoardMap">
+	SELECT * FROM board 
+	<where>
+		<if test="keyword != null">
+			title LIKE CONCAT("%", #{keyword}, '%')
+		</if>
+	</where>
+	LIMIT #{offset}, #{limit};
+</select>
+
+
+<select id="total" parameterType="String" resultType="int">
+	SELECT COUNT(*) FROM board
+	<where>
+		<if test="keyword != null">
+			title LIKE CONCAT("%", #{keyword}, '%')
+		</if>
+	</where>
+	
 </select>
 	
 <select id="searchBoard" parameterType="int" resultMap="BoardMap">
 	SELECT * FROM board WHERE no= #{no}
+	
 </select>
 
 <update id="updateBoard" parameterType="Board">
@@ -33,4 +51,21 @@
 
 
 
+<select id="search" resultMap="BoardMap">
+	SELECT * FROM board
+		<where>
+		<choose>
+			<when test="select.equals('all') and keyword != null and keyword != ''">
+				(title LIKE CONCAT('%', #{keyword}, '%')
+				OR no LIKE CONCAT('%', #{keyword}, '%'))
+			</when>
+			<when test="select.equals('title') and keyword != null and keyword != ''">
+				title LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="select.equals('no') and keyword != null and keyword != ''">
+				no LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+		</choose>
+	</where>
+</select>
 </mapper>

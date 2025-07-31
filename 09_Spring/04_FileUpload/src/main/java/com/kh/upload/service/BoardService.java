@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.upload.dto.BoardDTO;
+import com.kh.upload.dto.PagingDTO;
 import com.kh.upload.mapper.BoardMapper;
 import com.kh.upload.vo.Board;
 
@@ -21,18 +22,26 @@ public class BoardService {
 	public void insertBoard(Board board) {
 		mapper.insertBoard(board);
 	}
-	public List<BoardDTO> allBoard() {
-		List<Board> list = mapper.allBoard();
-		List<BoardDTO> dtoList = new ArrayList<BoardDTO>();
-		for(Board b : list) {
-			BoardDTO dto = new BoardDTO();
-			dto.setNo(b.getNo());
-			dto.setTitle(b.getTitle());
-			Date formatDate = Date.from(b.getCreatedAt().atZone(ZoneId.systemDefault()).toInstant());
-			dto.setFormatDate(formatDate);
-			dtoList.add(dto);
-		}
-		return dtoList;
+	public List<Board> allBoard(PagingDTO paging) { // 페이징 처리 안한 list
+//		List<BoardDTO> dtoList = new ArrayList<BoardDTO>();
+//		for(Board b : list) {
+//			BoardDTO dto = new BoardDTO();
+//			dto.setNo(b.getNo());
+//			dto.setTitle(b.getTitle());
+//			Date formatDate = Date.from(b.getCreatedAt().atZone(ZoneId.systemDefault()).toInstant());
+//			dto.setFormatDate(formatDate);
+//			dtoList.add(dto);
+//		}
+		 /* 만약 limit가 10인 경우
+		 * page = 1 -> offset = 0
+		 * page = 2 -> offset = 10
+		 * page = 3 -> offset = 20
+		 * 
+		 * offset = limit * (page -1)
+		 * */
+		paging.setOffset(paging.getLimit() * (paging.getPage() -1));
+		return mapper.allBoard(paging);
+		
 	}
 	public BoardDTO searchBoard(int no) {
 		 BoardDTO dto = new BoardDTO();
@@ -48,7 +57,10 @@ public class BoardService {
 	public void deleteBoard(int no) {
 		mapper.deleteBoard(no);
 	}
-	public void updateBoard(Board board) {
-		mapper.updateBoard(board);
+	public void updateBoard(BoardDTO dto) {
+		mapper.updateBoard(dto);
+	}
+	public int total(String keyword) {
+		return mapper.total(keyword);
 	}
 }

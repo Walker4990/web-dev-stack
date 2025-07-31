@@ -15,6 +15,11 @@
 	<div class="container">
 		<h1>List Page</h1>
 			<thead>
+					
+				<form action="/list" method="get">
+				검색 : <input type="text" name="keyword" value="${param.keyword}" placeholder="키워드를 입력하세요"> 
+				<button type="submit">검색</button>
+				</form>
 				
 				  <table class="vertical-table mb-4">
 					
@@ -38,7 +43,17 @@
 				    </tr>
 					</c:forEach>
 				  </table>
-				
+				  <nav>
+				  	<ul class="pagination">
+				  		<li class="page-item ${paging.prev ? '' : 'disabled'}"><a class="page-link" href="/list?page=${paging.startPage - 1}&keyword=${param.keyword}">Previous</a></li>
+
+				  		  	<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="page">
+				  		<li class="page-item"><a class="page-link ${paging.page == page ? 'active' : ''}" href="/list?page=${page}&keyword=${param.keyword}">${page}</a></li>
+				  		  	</c:forEach>
+				  		  								
+				  		<li class="page-item ${paging.next ? '' : 'disabled'}"><a class="page-link" href="/list?page=${paging.endPage + 1}&keyword=${param.keyword}">Next</a></li>
+				  	</ul>
+				  </nav>
 			</tbody>
 					
 		</table>
@@ -70,6 +85,9 @@
 					<input class="form-control" name="file" type="file" accept="image/*">
 					</div>
 		      </div>
+			  
+			  
+			  
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">취소</button>
 		        <button type="submit" class="btn btn-dark">등록</button>
@@ -78,7 +96,10 @@
 		    </div>
 		  </div>
 		</div>
+	
 	</div>
+	
+	
 	<style>
 	.vertical-table {
 	  width: 100%;

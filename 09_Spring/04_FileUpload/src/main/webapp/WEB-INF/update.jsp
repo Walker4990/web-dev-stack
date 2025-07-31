@@ -19,15 +19,29 @@
 		
 			
 				<form action="/update" method="post" enctype="multipart/form-data">
-				번호: <input type="text" value="${board.boardNo}" readonly /><br>
-					  <input type="hidden" id="boardNo" name="boardNo" value="${board.boardNo}"  />
-				      제목 : <input type="text" id="title" name="title" value="${board.title}"></br> 
-				      내용 : <input type="text"id="content" name="content" value="${board.content}"></br>
-				      파일 : <input type="file" id="file" name="file"></br>
-				작성일 : <input type="date" id=
-				        <button id="update" type="submit">수정</button>
-						<button id="cancel" type="button">취소</button>
-				</form>
-			  </table>
+				<input type="hidden" name="no" value="${board.no}" readonly /><br>
+					  <div class="form-group">
+						<label>Title</label>
+						<input class="form-control" name="title" value="${board.title}">
+						</div>
+						<div class="form-group">
+							<label>Content</label>
+							<textarea class="form-control" name="content" >
+								${board.content}
+								</textarea>
+						</div>
+						<img src="http://192.168.0.35:8081/${board.url}" width="100px" height="100px">
+						<div class="form-group">
+							<label>Update File</label>
+							<input class="form-control" name="file" type="file" accept="image/*"  />
+							
+						</div>
+						<!--수정 시 file이 있다면 기존 파일은 삭제하고 새로 추가된 파일로 업로드
+							파일 삭제 : File 객체의 delete() 메서드 사용
+						-->
+						
+				        <button id="update" type="submit" class="btn btn-dark">수정</button>
+						<button id="cancel" type="button" class="btn btn-dark">취소</button>
+						</form>
 </body>
 </html>
