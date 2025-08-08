@@ -12,10 +12,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class User implements UserDetails{
 	private String id;
 	private String pwd;
@@ -29,11 +26,11 @@ public class User implements UserDetails{
 	
 	@Override
 	public String getPassword() {
-		return this.pwd;
+		return pwd;
 	}
 	
 	@Override
 	public String getUsername() {
-		return this.id;
+		return id;
 	}
 }

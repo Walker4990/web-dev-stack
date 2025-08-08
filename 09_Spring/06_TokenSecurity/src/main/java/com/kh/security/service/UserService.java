@@ -13,36 +13,33 @@ import com.kh.security.vo.User;
 
 @Service
 public class UserService {
-
+	
 	@Autowired
 	private UserMapper mapper;
-	// 가장 많이 사용하는 암호화
+
 	@Autowired
 	private PasswordEncoder bcpe;
 	
-	public void register(User user) {
-//		System.out.println("암호화 전 : " + user.getPwd());
-//		System.out.println("암호화 후 : " + bcpe.encode(user.getPwd()));
-		user.setPwd(bcpe.encode(user.getPwd()));
-		if(user.getId().equals("admin")) {
-			user.setRole("ROLE_ADMIN");
+	public void register(User vo) {
+		//System.out.println("암호화 전 : " + vo.getPwd());
+		//System.out.println("암호화 후 : " + bcpe.encode(vo.getPwd()));
+		vo.setPwd(bcpe.encode(vo.getPwd()));
+		if(vo.getId().equals("admin")) {
+			vo.setRole("ROLE_ADMIN");
 		} else {
-			user.setRole("ROLE_USER");
+			vo.setRole("ROLE_USER");
 		}
-	
-		mapper.register(user);
+		mapper.register(vo);
 	}
 
 	public User login(User vo) {
-		 User user = mapper.login(vo.getId());
-		 
-		 if(user != null && bcpe.matches(vo.getPwd(), user.getPwd())) {
-			 System.out.println("로그인 성공!");
-			 return user;
-		 }
+		User user = mapper.login(vo.getId());
+		
+		if(user!=null && bcpe.matches(vo.getPwd(), user.getPwd())) {
+			System.out.println("로그인 성공!");
+			return user;
+		}
+		
 		return null;
 	}
-	
-	
-	
 }
