@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="s">
+<select id="sj_list" resultType="vo.SjVO">
+	SELECT * FROM SUNGTB
+</select>
+ 
+ <insert id="sj_register" parameterType="vo.SjVO">
+ INSERT INTO sungtb VALUES ( sungtb_seq.NEXTVAL, #{name}, #{kor}, #{eng}, #{mat} )
+ </insert>
+  
+<delete id="sh_del" parameterType="vo.SjVO">
+	DELETE FROM sungtb WHERE no = #{no}
+</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
