@@ -20,8 +20,15 @@ public class MDelAct extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idx = Integer.parseInt(request.getParameter("idx"));
-		MemberDAO.getInstance().delete(idx);
-		response.sendRedirect("list.do");
+		int res = MemberDAO.getInstance().delete(idx);
+		String result = "no";
+		
+		if (res > 0) {
+			result= "yes";
+		}
+		response.setContentType("text/plain;charset=UTF-8");
+		String resultStr = String.format("[{ \"result\":\"%s\", \"idx\":%d }]", result, idx);		response.getWriter().println( resultStr );
+//		response.sendRedirect("list.do");
 		
 		
 	}

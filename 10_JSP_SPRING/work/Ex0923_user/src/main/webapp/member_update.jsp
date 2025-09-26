@@ -10,6 +10,7 @@
 <script>
 function send(f){
 	f.action = 'update.do';
+	f.method = "post";
 	f.submit();
 }
 </script>

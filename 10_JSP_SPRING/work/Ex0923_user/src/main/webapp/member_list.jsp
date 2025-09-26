@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="js/httpRequest.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -11,8 +12,27 @@
 function del(idx){
 	if(!confirm('정말로 삭제하시겠습니까?'))
 		return;
-	location.href="member_del.do?idx=" + idx;
+	
+	let url = "member_del.do";
+	let param = "idx=" +idx;
+	// 특수문자가 포함되어있는 것을 보내려면 encodeURIComponent()로 감싸서 보내면 된다.
+	sendRequest(url, param, resDel, "post");
 }	
+
+function resDel(){
+	if (xhr.readyState == 4 && xhr.status == 200){
+		let data = xhr.responseText;
+		let json = JSON.parse(data);
+		
+		if ( json[0].result =='yes' ){
+			alert(json[0].idx + '번 회원 삭제 완료')
+			location.reload();
+		} else {
+			alert(json[0].idx + '번 회원 삭제 불가')
+		}
+	}
+}
+
 
 
 	</script>

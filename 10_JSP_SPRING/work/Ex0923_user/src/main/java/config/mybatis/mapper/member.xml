@@ -22,17 +22,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	DELETE FROM member WHERE idx=#{idx}
 </delete>
 <update id="member_update" parameterType="java.util.Map">
-	UPDATE member
-	SET name=#{name},
-		userid=#{userid},
-		pwd=#{pwd},
-		email=#{email},
-		addr=#{addr}
-	WHERE idx=#{idx}
+   UPDATE member 
+    SET name   = #{name,jdbcType=VARCHAR},
+        userid = #{userid,jdbcType=VARCHAR},
+        pwd    = #{pwd,jdbcType=VARCHAR},
+        email  = #{email,jdbcType=VARCHAR},
+        addr   = #{addr,jdbcType=VARCHAR}
+    WHERE idx  = #{idx,jdbcType=INTEGER}
 </update>
 
-<select id="select_one">
+<select id="select_one" parameterType="int" resultType="vo.MemberVO">
 	select * from member where idx=#{idx}
+</select>
+<select id="check_userid" parameterType="String" resultType="vo.MemberVO" >
+	select * from member where userid = #{userid}
 </select>
 </mapper>
 

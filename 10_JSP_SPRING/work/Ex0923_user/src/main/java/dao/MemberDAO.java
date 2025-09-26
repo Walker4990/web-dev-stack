@@ -58,4 +58,11 @@ public class MemberDAO {
 		sqlSession.close();
 		return res;
 	}
+	// 아이디 중복체크
+	public MemberVO selectOne(String userid) {
+		SqlSession sqlSession = factory.openSession();
+		MemberVO member = sqlSession.selectOne("m.check_userid", userid);
+		sqlSession.close();
+		return member;
+	}
 }

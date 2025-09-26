@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="p">
+
+<select id="select_list" parameterType="String" resultType="pro">
+    select * from product where category = #{category}
+</select>
+<insert id="insert_product" parameterType="pro">
+  INSERT INTO product (
+        idx, category, p_num, p_name,
+        p_company, p_price, p_saleprice,
+        p_image_s, p_image_l, p_content, p_date
+    ) VALUES (
+        seq_pro_idx.nextVal,
+        #{category},
+        #{p_num},
+        #{p_name},
+        #{p_company},
+        #{p_price},
+        #{p_saleprice},
+        #{p_image_s},
+        #{p_image_l},
+        #{p_content, jdbcType=CLOB},
+        #{p_date, jdbcType=DATE}
+    )
+</insert>
+
+<select id="product_detail" parameterType="int" resultType="pro">
+	SELECT * FROM product WHERE idx = #{idx}
+</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
